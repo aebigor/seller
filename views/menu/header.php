@@ -16,7 +16,7 @@
             <a href="#" class="logo">logo </a>
             <input type="checkbox" id="menu"/>
             <label for="menu">
-                <img  src="imagenes/menu.png" class="menu-icono" alt="menu">
+                <img  src="img/menu.png" class="menu-icono" alt="menu">
             </label>
             <nav  class="navbar">
                 <ul>
@@ -86,7 +86,6 @@
                     <img src="img/prd4.jpeg" alt="">
                     <img src="img/prd5.jpeg" alt="">
                     <img src="img/prd6.jpeg" alt="">
-                    <p> ofertas especiales</p>
                 </div>
                 <div id="ground"></div>
             </div>

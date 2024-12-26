@@ -7,7 +7,7 @@
                 
             </div>
             <div class="ofert-img">
-                <img src="imagenes/producto-ringo.png" alt="">
+                <img src="img/producto-ringo.png" alt="">
             </div>
         </div>
         <div class="ofert-1 b2">
@@ -16,7 +16,7 @@
                 <a href="#">leer mas</a>
             </div>
             <div class="ofert-img">
-                <img src="imagenes/dogourmet.jpg" alt="">
+                <img src="img/dogourmet.jpg" alt="">
             </div>
         </div>
         <div class="ofert-1 b3">
@@ -25,7 +25,7 @@
                 <a href="#">leer mas</a>
             </div>
             <div class="ofert-img">
-                <img src="imagenes/filpo-adulto.jpg" alt="">
+                <img src="img/filpo-adulto.jpg" alt="">
             </div>
         </div>
 
@@ -43,7 +43,7 @@
                     consectetur et, illo error exercitatione
                     m, adipisci enim voluptatibus aliquid repellat dignissimos blanditiis sunt facere?
                 </p>
-                <img src="imagenes/starts.png" alt="">
+                <img src="img/starts.png" alt="">
                 <h4>lorem impsum</h4>
             </div>
             <div class="testimonial-1">
@@ -52,7 +52,7 @@
                     consectetur et, illo error exercitatione
                     m, adipisci enim voluptatibus aliquid repellat dignissimos blanditiis sunt facere?
                 </p>
-                <img src="imagenes/starts.png" alt="">
+                <img src="img/starts.png" alt="">
                 <h4>lorem impsum</h4>
             </div>
         </div>

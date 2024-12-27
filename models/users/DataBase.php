@@ -1,31 +1,27 @@
 <?php
     
-    class DataBase{       
-    
-        //  public static function connection(){            
-        //     $hostname = "is-yours-testing:us-central1:is-yours";
-        //     $port = "3306";
-        //     $database = "is_yours_GCSQL";
-        //     $username = "admin_test";
-        //     $password = "|@_6J"UO7sud@?f>";
-        //     $options = array(
-        //         PDO::MYSQL_ATTR_SSL_CA => 'asset/db/DigiCertGlobalRootCA.crt.pem'
-        //     );
-		// 	$pdo = new PDO("mysql:host=$hostname;port=$port;dbname=$database;charset=utf8",$username,$password,$options);
-		// 	$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		// 	return $pdo;
-		// }} 
+    class DataBase{
 
-        public static function connection(){            
+        public static function connection(){  
+
             $hostname = "localhost";
+
             $port = "3306";
-            $database = "pentland"; // ajustar en qa servidor de pruebas
-            $username = "root";     // ajustar en qa servidor de pruebas
-            $password = "";
+
+            $database = "pentland"; // ajustar (nombre BD) en qa servidor de pruebas
+
+            $username = "root";     // ajustar (usuario BD) en qa servidor de pruebas
+
+            $password = "";         // ajustar (Contraseña de BD) en qa servidor de pruebas
+
 			$pdo = new PDO("mysql:host=$hostname;port=$port;dbname=$database;charset=utf8",$username,$password);
+
 			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
 			return $pdo;
+
 		}
-	
+
 	}
+    
 ?>

@@ -19,8 +19,8 @@
         public static function connection(){            
             $hostname = "localhost";
             $port = "3306";
-            $database = "pentland";
-            $username = "root";
+            $database = "pentland"; // ajustar en qa servidor de pruebas
+            $username = "root";     // ajustar en qa servidor de pruebas
             $password = "";
 			$pdo = new PDO("mysql:host=$hostname;port=$port;dbname=$database;charset=utf8",$username,$password);
 			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

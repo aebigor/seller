@@ -169,7 +169,7 @@
                         $passCifrada = password_hash($_POST['passCorreo'], PASSWORD_DEFAULT);
                         
                         // Preparar la consulta SQL para insertar un nuevo usuario
-                        $sql = 'INSERT INTO USUARIO (nombre, apellido, correo, passCorreo, rol) VALUES (:nombre, :apellidos, :correo, :passCorreo, :rol)';
+                        $sql = 'INSERT INTO usuario (nombre, apellido, correo, passCorreo, rol) VALUES (:nombre, :apellidos, :correo, :passCorreo, :rol)';
                         
                         if ($stmt = $this->dbh->prepare($sql)) {
                             // Vincular parámetros

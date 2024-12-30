@@ -3,14 +3,11 @@
 <head>
 <title>menu-p</title>
 <meta charset="UTF-8">
-<link rel ="stylesheet" href="assets/css/registro.css" type="text/css">
-<link rel ="stylesheet" href="assets/css/categoria.css" type="text/css">
+<link rel ="stylesheet" href="asset/css/registro.css" type="text/css">
+<link rel ="stylesheet" href="asset/css/categoria.css" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<style>
-</style>
 </head>
 <body>
-
     <header class="header">
         <div class="menu container">
             <a href="#" class="logo">logo </a>
@@ -29,14 +26,8 @@
                     
                 </ul>
                 <div class="botons">
-
-                    
-
-                    
-
                 </div>
-            </nav>
-            
+            </nav>            
             <div>
                 <ul>
                     <li class="submenu">
@@ -53,16 +44,13 @@
                                 </thead>
                                 <tbody></tbody>
                             </table>
-                            <a href="#" id="vaciar-carrito" class="btn-3">vaciar carrito</a>
-                            
-
+                            <a href="#" id="vaciar-carrito" class="btn-3">vaciar carrito</a>                      
                         </div>
                         <div id="total-carrito">$0.00</div>
                     </li>
                 </ul>
             </div>
         </div>
-
         <div class="header-content container">
             <div class="header-txt">
                 <span> bienvenido a nuestra tienda</span>

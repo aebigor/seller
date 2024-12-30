@@ -114,9 +114,9 @@
             </div>
         </div>
     </footer>
-<script src="assets/js/carrito.js" ></script>
-<script src="assets/js/funcionmenu.js" ></script>
-<script src="assets/js/carrusel.js" ></script>
+<script src="asset/js/carrito.js" ></script>
+<script src="asset/js/funcionmenu.js" ></script>
+<script src="asset/js/carrusel.js" ></script>
 </body>
 
 </html>

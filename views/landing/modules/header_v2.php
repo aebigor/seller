@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
+
 <head>
   <script src="assets/plantilla/bootstrap_5.3.3/assets/js/color-modes.js"></script>
   <meta charset="utf-8">
@@ -11,6 +12,8 @@
   <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/footers/">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
   <link href="assets/plantilla/bootstrap_5.3.3/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/b3a2e83ff1.js" crossorigin="anonymous"></script>
+  <!-- usu fontawesome xenito3010@evnft.com pwd abc.123. -->
   <!-- <link rel ="stylesheet" href="assets/css/registro.css" type="text/css">
     <link rel ="stylesheet" href="assets/css/categoria.css" type="text/css"> -->
   <style>
@@ -129,6 +132,7 @@
     }
   </style>
 </head>
+
 <body>
   <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
     <symbol id="check2" viewBox="0 0 16 16">
@@ -550,6 +554,53 @@
         <br>
         <h1 class="text-center">Contacto</h1>
         <br>
+        <section>
+          <div class="container">
+            <div class="card">
+              <div class="row p-4 m-4">
+                <div class="col-6 my-2 py-2">
+                  <label>Nombres y Apellidos: </label>
+                  <input class="form-control" type="text" name="">
+                </div>
+                <div class="col-6 my-2 py-2">
+                  <label>Telefono: </label>
+                  <input class="form-control" type="text" name="">
+                </div>
+                <div class="col-6 my-2 py-2">
+                  <label>Correo: </label>
+                  <input class="form-control" type="text" name="">
+                </div>
+                <div class="col-6 my-2 py-2">
+                  <label>Asunto: </label>
+                  <input class="form-control" type="text" name="">
+                </div>
+                <div class="col-12 my-2 py-2">
+                  <label>Contenido del Correo: </label>
+                  <textarea class="form-control form-control-lg" id="message" name="message" rows="4"
+                    required></textarea>
+                </div>
+                <div class="form-row mb-3">
+                  <div class="form-group">
+                    <label class="form-label">¿Cómo prefieres recibir nuestra respuesta?</label><br>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" name="response" id="responseWhatsapp"
+                        value="whatsapp">
+                      <label class="form-check-label" for="responseWhatsapp">WhatsApp</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" name="response" id="responseEmail" value="email">
+                      <label class="form-check-label" for="responseEmail">Correo Electrónico</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="container">
+                  <button class="btn btn-bd-primary-v2">Enviar Solicitud de contacto</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <br>
         <h4 id="scrollspyHeading5"></h4>
         <br>
         <h1 class="text-center">Metodos de pago</h1>
@@ -558,20 +609,33 @@
           <div class="container">
             <div class="row">
               <div class="col">
-                <button type="button" class="btn btn-warning btn-lg">Consignacion Efecty</button>
+                <button type="button" class="btn btn-warning btn-lg d-flex flex-column align-items-center">
+                  <i class="fa-solid fa-money-check-dollar fa-3x"></i>
+                  <span class="mt-2">Consignación Efecty</span>
+                </button>
               </div>
               <div class="col">
-                <button type="button" class="btn btn-primary btn-lg">Transferencia</button>
+                <button type="button" class="btn btn-primary btn-lg d-flex flex-column align-items-center">
+                  <i class="fa-solid fa-money-bill-transfer fa-3x"></i>
+                  <span class="mt-2">Transferencia</span>
+                </button>
               </div>
               <div class="col">
-                <button type="button" class="btn btn-success btn-lg">Efectivo</button>
+                <button type="button" class="btn btn-success btn-lg d-flex flex-column align-items-center">
+                  <i class="fa-solid fa-sack-dollar fa-3x"></i>
+                  <span class="mt-2">Efectivo</span>
+                </button>
               </div>
               <div class="col">
-                <button type="button" class="btn btn-success btn-lg">Por medio de la cooperativa</button>
+                <button type="button" class="btn btn-info btn-lg d-flex flex-column align-items-center">
+                  <i class="fa-solid fa-landmark fa-3x"></i>
+                  <span class="mt-2">Por medio de la cooperativa</span>
+                </button>
               </div>
             </div>
           </div>
         </section>
+
         <br>
         <h4 id="scrollspyHeading5"></h4>
         <br>
@@ -683,4 +747,5 @@
 <script src="assets/js/funcionmenu.js" ></script>
 <script src="assets/js/carrusel.js" ></script> -->
 </body>
+
 </html>

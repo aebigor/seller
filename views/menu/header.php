@@ -24,8 +24,8 @@
                     <li><a href="#">servicios</a></li>
                     <li><a href="#">categoria</a></li>
                     <li><a href="#">contacto</a></li>
-                    <li><a href="?c=Roles&a=validar" >inicio sesion</a></li>
-                    <li><a href="?c=Roles&a=mostrarFormularioRol" >registrar</a></li>
+                    <li><a href="?c=Roles&a=validar" >inicio sesion / registrarse</a></li>
+                    <!-- <li><a href="?c=Roles&a=mostrarFormularioRol" >registrar</a></li> -->
                     
                 </ul>
                 <div class="botons">
@@ -79,16 +79,16 @@
             </div>
             <div id="drag-container">
                 <div id="spin-container">
-                <?php
-require_once "controller/oferta.php";
-
-$oferta = new Oferta(); // Crear una instancia de la clase Oferta
-$imagenesOfertas = $oferta->obtenerImagenesOfertas(); // Llamar a la función
-
-foreach ($imagenesOfertas as $imagen) {
-    echo "<img src='" . $imagen . "' alt='Oferta'>";
-}
-?>
+                    <?php
+                    require_once "controllers/oferta.php";
+                    
+                    $oferta = new Oferta(); // Crear una instancia de la clase Oferta
+                    $imagenesOfertas = $oferta->obtenerImagenesOfertas(); // Llamar a la función
+                    
+                    foreach ($imagenesOfertas as $imagen) {
+                        echo "<img src='" . $imagen . "' alt='Oferta'>";
+                    }
+                    ?>
                 </div>
                 <div id="ground"></div>
             </div>

@@ -10,9 +10,10 @@
     <title>Seller-Servitel-Servientrega</title>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/footers/">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link href="assets/plantilla/bootstrap_5.3.3/assets/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- <link rel ="stylesheet" href="assets/css/registro.css" type="text/css">
-    <link rel ="stylesheet" href="assets/css/categoria.css" type="text/css"> -->
+    <link rel ="stylesheet" href="assets/css/registro.css" type="text/css">
+    <link rel ="stylesheet" href="assets/css/categoria.css" type="text/css">
 
     <style>
       .bd-placeholder-img {
@@ -120,6 +121,7 @@
       .bd-mode-toggle .dropdown-menu .active .bi {
         display: block !important;
       }
+      
     </style>    
   </head>
   <body>
@@ -226,10 +228,10 @@
         <!-- Alineación para los enlaces de "Registrarse" e "Iniciar Sesión" -->
         <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Registrarse</a>
+            <a class="nav-link active" aria-current="page" href="?c=Roles&a=validar">Registrarse / Iniciar Sesion</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Iniciar Sesion</a>
+            <a class="nav-link active" aria-current="page" href="#"></a>
           </li>
         </ul>
 
@@ -250,70 +252,22 @@
     <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
       <div class="col-10 col-sm-8 col-lg-6 px-5">
 
-<style type="text/css">
 
-.gallery{
-  position:relative;
-  width:300px;
-  height:200px;
-  transform-style:preserve-3d;
-  animation:rotate 35s linear infinite;
-}
-
-@keyframes rotate{
-  from{
-    transform:perspective(2200px) rotateY(0deg);
-  }
-  
-  to{
-    transform:perspective(2200px) rotateY(560deg);
-  }
-}
-
-.gallery span{
-  position:absolute;
-  width:100%;
-  height:100%;
-  transform-origin:center;
-  transform-style:preserve-3d;
-  transform:rotateY(calc(var(--i) * 45deg)) translateZ(200px);
-}
-
-.gallery span img{
-  position:absolute;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-</style>
-
-<div class="gallery">
-  <span style="--i:1">
-    <img src="https://images4.alphacoders.com/678/thumb-1920-678317.jpg" class="rounded-5" />
-  </span>
-  <span style="--i:2">
-    <img src="https://images5.alphacoders.com/653/653698.jpg" class="rounded-5" />
-  </span>
-  <span style="--i:3">
-    <img src="https://images6.alphacoders.com/803/thumb-1920-803643.png" class="rounded-5" />
-  </span>
-  <span style="--i:4">
-    <img src="https://images.alphacoders.com/785/thumb-1920-785833.png" class="rounded-5" />
-  </span>
-  <span style="--i:5">
-    <img src="https://images6.alphacoders.com/749/thumb-1920-749966.png" class="rounded-5" />
-  </span>
-  <span style="--i:6">
-    <img src="https://images4.alphacoders.com/761/thumb-1920-761076.png" class="rounded-5" />
-  </span>
-  <span style="--i:7">
-    <img src="https://images.alphacoders.com/682/thumb-1920-682570.png" class="rounded-5" />
-  </span>
-  <span style="--i:8">
-    <img src="https://images4.alphacoders.com/866/thumb-1920-866812.png" class="rounded-5" />
-  </span>
-</div>
+<div id="drag-container">
+                <div id="spin-container">
+                    <?php
+                    require_once "controllers/oferta.php";
+                    
+                    $oferta = new Oferta(); // Crear una instancia de la clase Oferta
+                    $imagenesOfertas = $oferta->obtenerImagenesOfertas(); // Llamar a la función
+                    
+                    foreach ($imagenesOfertas as $imagen) {
+                        echo "<img src='" . $imagen . "' alt='Oferta'>";
+                    }
+                    ?>
+                </div>
+                <div id="ground"></div>
+            </div>
 
 
 
@@ -390,8 +344,8 @@
 
 <script src="assets/plantilla/bootstrap_5.3.3/assets/dist/js/bootstrap.bundle.min.js"></script>
 <!-- <script src="assets/js/carrito.js" ></script>
-<script src="assets/js/funcionmenu.js" ></script>
-<script src="assets/js/carrusel.js" ></script> -->
+<script src="assets/js/funcionmenu.js" ></script> -->
+<script src="assets/js/carrusel.js" ></script>
 
     </body>
 </html>

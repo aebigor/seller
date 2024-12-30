@@ -1,6 +1,5 @@
 <?php
 global $db; 
-require_once "models/users/DataBase.php";
 class Oferta
 {
     public $descuento;

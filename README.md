@@ -1,5 +1,5 @@
 # Nombre del Proyecto
-
+Seller / vendedor
 ## Descripción
 
 Este proyecto es una aplicación web para gestionar una tienda en línea de productos electrónicos, donde los usuarios pueden navegar por categorías, agregar productos al carrito y realizar compras. El sistema está diseñado para ser intuitivo y escalable, permitiendo a los administradores gestionar inventarios y procesar pedidos.

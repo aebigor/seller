@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors modified: Jose bohorquez">
   <meta name="generator" content="Hugo 0.122.0">
-  <title>Seller-Servitel-Servientrega</title>
+  <title>Seller</title>
   <link rel="icon" href="assets/imagenes/landing/logo_servitel.ico" type="image/x-icon">
   <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/footers/">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
@@ -16,7 +16,7 @@
   <script src="https://kit.fontawesome.com/b3a2e83ff1.js" crossorigin="anonymous"></script>
   <!-- usu fontawesome xenito3010@evnft.com pwd abc.123. -->
   <!-- <link rel ="stylesheet" href="assets/css/registro.css" type="text/css">
-    <link rel ="stylesheet" href="assets/css/categoria.css" type="text/css"> -->
+  <link rel ="stylesheet" href="assets/css/categoria.css" type="text/css"> -->
 <style>
   /* Estilos generales para los íconos y elementos */
   .bd-placeholder-img {
@@ -354,7 +354,7 @@ body[data-bs-theme="light"] #logo-servitel {
         <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link active btn-bd-primary-v2 border text-white rounded-3" aria-current="page"
-              href="#">Registrarse / Iniciar Sesion</a>
+              href="?c=Roles&a=validar">Registrarse / Iniciar Sesion</a>
           </li>
         </ul>
         <!-- Alineación del carrito a la derecha -->
@@ -374,74 +374,28 @@ body[data-bs-theme="light"] #logo-servitel {
     <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
       <div class="col-10 col-sm-8 col-lg-6 px-5">
 
-        <style type="text/css">
-          .gallery {
-            position: relative;
-            width: 300px;
-            height: 100px;
-            transform-style: preserve-3d;
-            animation: rotate 35s linear infinite;
-          }
+            <div id="drag-container">
+                <div id="spin-container">
+                <?php
+                  require_once "controllers/oferta.php";
 
-          @keyframes rotate {
-            from {
-              transform: perspective(2100px) rotateY(0deg);
-            }
+                  $oferta = new Oferta(); // Crear una instancia de la clase Oferta
+                  $imagenesOfertas = $oferta->obtenerImagenesOfertas(); // Llamar a la función
 
-            to {
-              transform: perspective(2100px) rotateY(560deg);
-            }
-          }
+                  foreach ($imagenesOfertas as $imagen) {
+                      echo "<img src='" . $imagen . "' alt='Oferta'>";
+                  }
+                  ?>
+                </div>
+                <div id="ground"></div>
+            </div>
 
-          .gallery span {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            transform-origin: center;
-            transform-style: preserve-3d;
-            transform: rotateY(calc(var(--i) * 45deg)) translateZ(100px);
-          }
-
-          .gallery span img {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-          }
-        </style>
-        <div class="gallery">
-          <span style="--i:1">
-            <img src="https://images4.alphacoders.com/678/thumb-1920-678317.jpg" class="rounded-5" />
-          </span>
-          <span style="--i:2">
-            <img src="https://images5.alphacoders.com/653/653698.jpg" class="rounded-5" />
-          </span>
-          <span style="--i:3">
-            <img src="https://images6.alphacoders.com/803/thumb-1920-803643.png" class="rounded-5" />
-          </span>
-          <span style="--i:4">
-            <img src="https://images.alphacoders.com/785/thumb-1920-785833.png" class="rounded-5" />
-          </span>
-          <span style="--i:5">
-            <img src="https://images6.alphacoders.com/749/thumb-1920-749966.png" class="rounded-5" />
-          </span>
-          <span style="--i:6">
-            <img src="https://images4.alphacoders.com/761/thumb-1920-761076.png" class="rounded-5" />
-          </span>
-          <span style="--i:7">
-            <img src="https://images.alphacoders.com/682/thumb-1920-682570.png" class="rounded-5" />
-          </span>
-          <span style="--i:8">
-            <img src="https://images4.alphacoders.com/866/thumb-1920-866812.png" class="rounded-5" />
-          </span>
-        </div>
       </div>
       <div class="col-lg-6">
         <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-1">Llego la navidad</h1>
         <p class="lead">¡ Y papa noel trajo las mejores ofertas para esta nevidad!</p>
         <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-          <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Primary</button>
-          <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button>
+          <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Ver</button>
         </div>
       </div>
     </div>
@@ -706,25 +660,25 @@ body[data-bs-theme="light"] #logo-servitel {
           <div class="container">
             <div class="row">
               <div class="col">
-                <button type="button" class="btn btn-warning btn-lg d-flex flex-column align-items-center">
+                <button type="button" class="btn btn-warning btn-lg d-flex flex-column align-items-center rounded-5">
                   <i class="fa-solid fa-money-check-dollar fa-3x"></i>
                   <span class="mt-2">Consignación Efecty</span>
                 </button>
               </div>
               <div class="col">
-                <button type="button" class="btn btn-primary btn-lg d-flex flex-column align-items-center">
+                <button type="button" class="btn btn-primary btn-lg d-flex flex-column align-items-center rounded-5">
                   <i class="fa-solid fa-money-bill-transfer fa-3x"></i>
                   <span class="mt-2">Transferencia</span>
                 </button>
               </div>
               <div class="col">
-                <button type="button" class="btn btn-success btn-lg d-flex flex-column align-items-center">
+                <button type="button" class="btn btn-success btn-lg d-flex flex-column align-items-center rounded-5">
                   <i class="fa-solid fa-sack-dollar fa-3x"></i>
                   <span class="mt-2">Efectivo</span>
                 </button>
               </div>
               <div class="col">
-                <button type="button" class="btn btn-info btn-lg d-flex flex-column align-items-center">
+                <button type="button" class="btn btn-info btn-lg d-flex flex-column align-items-center rounded-5">
                   <i class="fa-solid fa-landmark fa-3x"></i>
                   <span class="mt-2">Por medio de la cooperativa</span>
                 </button>

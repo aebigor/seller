@@ -49,7 +49,13 @@
 					<i class="far fa-times-circle show-nav-lateral"></i>
 					<img src="img/Avatar.png" class="img-fluid" alt="Avatar">
 					<figcaption class="roboto-medium text-center">
-						Santiago Basto <br><small class="roboto-condensed-light">Web Developer</small>
+					<?php
+        				if (isset($_SESSION['nombre'])) {
+        				    echo $_SESSION['apellido'];
+        				} else {
+        				    echo "Usuario"; // Valor por defecto si no hay sesión
+        				}
+        			?><br><small class="roboto-condensed-light">Web Developer</small>
 					</figcaption>
 				</figure>
 				<div class="full-box nav-lateral-bar"></div>
@@ -65,6 +71,12 @@
 								</li>
 								<li>
 									<a href="?c=Roles&a=createProduct"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Registrar producto</a>
+								</li>
+								<li>
+								<a href="?c=Oferta&a=subirOfertaImagen"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp;subir oferta</a>
+								</li>
+								<li>
+								<a href="?c=Oferta&a=subirTextoOferta"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp;subir texto oferta</a>
 								</li>
 							</ul>
 						</li>

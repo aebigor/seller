@@ -16,7 +16,8 @@
 		// 	return $pdo;
 		// }} 
 
-        public static function connection(){            
+        public static function connection(){       
+            global $db;     
             $hostname = "localhost";
             $port = "3306";
             $database = "pentland";

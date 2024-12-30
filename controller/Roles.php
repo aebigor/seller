@@ -388,18 +388,7 @@ require_once "models/users/user.php";
             }
         }
     }
-    // public function mostrarMenu() {
-    //     $producto = new producto();
-    //     $productos = $producto->fetchAllProductos();
-    
-    //     require_once 'views/menu/header.php'; // Include header view
-    //     require_once 'views/menu/categori.php'; // Include categori view
-    //     require_once 'views/menu/footer.php';
-        
-    //     require_once "models/users/producto.php";// Include footer view
-    
-    //     // Pass data to views using variables (explained later)
-    //   }
+   
     
     
         

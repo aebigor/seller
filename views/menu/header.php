@@ -79,13 +79,16 @@
             </div>
             <div id="drag-container">
                 <div id="spin-container">
-                    <!--img del carrusel -->
-                    <img src="img/prd1.jpeg" alt="">
-                    <img src="img/prd2.jpeg" alt="">
-                    <img src="img/prd3.jpeg" alt="">
-                    <img src="img/prd4.jpeg" alt="">
-                    <img src="img/prd5.jpeg" alt="">
-                    <img src="img/prd6.jpeg" alt="">
+                <?php
+require_once "controller/oferta.php";
+
+$oferta = new Oferta(); // Crear una instancia de la clase Oferta
+$imagenesOfertas = $oferta->obtenerImagenesOfertas(); // Llamar a la función
+
+foreach ($imagenesOfertas as $imagen) {
+    echo "<img src='" . $imagen . "' alt='Oferta'>";
+}
+?>
                 </div>
                 <div id="ground"></div>
             </div>

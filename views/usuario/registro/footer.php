@@ -12,7 +12,7 @@
                 <button class="botons" type="submit" name="registro">Registrar</button>
                 
                
-                <p><a href="http://localhost/pentlan2/index.php?c=Roles&a=validar">¿Ya tengo cuenta?</a></p>
+                <p><a href="?c=Roles&a=validar">¿Ya tengo cuenta?</a></p>
             </fieldset>
         
         

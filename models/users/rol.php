@@ -223,13 +223,13 @@
                                 header("Location: ?c=menuV");
                                 exit();
                             } else if ($usuario['rol'] === 'Usuario'){
-                                header("Location: ?c=menuU");
+                                header("Location: ?c=MenuU");
                                 exit();
                             } else if ($usuario['rol'] === 'Admin'){
                                 header("Location: ?c=menuA");
                                 exit();
                             }  else {
-                                header("Location: ?c=menu");
+                                header("Location: ?c=Menu");
                                 exit();
                             }
                         }   

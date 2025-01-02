@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
+  <head><script src="assets/plantilla/bootstrap_5.3.3/assets/js/color-modes.js"></script>
 
 <head>
   <script src="assets/plantilla/bootstrap_5.3.3/assets/js/color-modes.js"></script>
@@ -322,12 +323,12 @@ body[data-bs-theme="light"] #logo-servitel {
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- Alineación central para los enlaces principales -->
-        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-          <!-- mx-auto centrándolos -->
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0"> <!-- mx-auto centrándolos -->
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Inicio</a>
           </li>
@@ -339,9 +340,7 @@ body[data-bs-theme="light"] #logo-servitel {
               <li><a class="dropdown-item" href="#">Celulares</a></li>
               <li><a class="dropdown-item" href="#">Computadores</a></li>
               <li><a class="dropdown-item" href="#">Equipos Usados</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
+              <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="#">Metodos de Pago</a></li>
               <li><a class="dropdown-item" href="#">Reglas de promos</a></li>
             </ul>
@@ -350,13 +349,17 @@ body[data-bs-theme="light"] #logo-servitel {
             <a class="nav-link active" aria-current="page" href="#">Contacto</a>
           </li>
         </ul>
+
         <!-- Alineación para los enlaces de "Registrarse" e "Iniciar Sesión" -->
         <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item">
+
             <a class="nav-link active btn-bd-primary-v2 border text-white rounded-3" aria-current="page"
               href="?c=Roles&a=validar">Registrarse / Iniciar Sesion</a>
+
           </li>
         </ul>
+
         <!-- Alineación del carrito a la derecha -->
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item d-flex align-items-center">
@@ -367,7 +370,7 @@ body[data-bs-theme="light"] #logo-servitel {
       </div>
     </div>
   </nav>
-
+</section>
 
 
   <div class="container col-xxl-8 px-4 py-5">
@@ -386,11 +389,14 @@ body[data-bs-theme="light"] #logo-servitel {
                       echo "<img src='" . $imagen . "' alt='Oferta'>";
                   }
                   ?>
+
                 </div>
                 <div id="ground"></div>
             </div>
 
+
       </div>
+
       <div class="col-lg-6">
         <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-1">Llego la navidad</h1>
         <p class="lead">¡ Y papa noel trajo las mejores ofertas para esta nevidad!</p>
@@ -400,6 +406,7 @@ body[data-bs-theme="light"] #logo-servitel {
       </div>
     </div>
   </div>
+
   <section>
     <div class="container">
       <!-- 
@@ -731,43 +738,30 @@ body[data-bs-theme="light"] #logo-servitel {
           </div>
         </section>
         <br>
+
       </div>
-    </div>
-  </section>
-  <div class="container">
-    <footer class="py-5">
-      <div class="row">
-        <div class="col-6 col-md-2 mb-3">
-          <h5>Informacion de la empresa</h5>
-          <ul class="nav flex-column">
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Acerca de seller</a></li>
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Contactanos</a></li>
-          </ul>
-        </div>
-        <div class="col-6 col-md-2 mb-3">
-          <h5>Atencion al cliente</h5>
-          <ul class="nav flex-column">
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Politica de devolucion y
-                reembolso</a></li>
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Politica de propiedad
-                intelectual</a></li>
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Politica de envios</a></li>
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Reportar actividad sospechosa
-              </a></li>
-          </ul>
-        </div>
-        <div class="col-6 col-md-2 mb-3">
-          <h5>Ayuda</h5>
-          <ul class="nav flex-column">
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Centro de ayuda y preguntas
-                frecuentes</a></li>
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Centro de seguridad</a></li>
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Proteccion de compras de
-                seller</a></li>
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Asociate a seller</a></li>
-          </ul>
-        </div>
-        <div class="col-md-5 offset-md-1 mb-3">
+
+      <div class="col-6 col-md-2 mb-3">
+        <h5>Atencion al cliente</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Politica de devolucion y reembolso</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Politica de propiedad intelectual</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Politica de envios</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Reportar actividad sospechosa </a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-md-2 mb-3">
+        <h5>Ayuda</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Centro de ayuda y preguntas frecuentes</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Centro de seguridad</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Proteccion de compras de seller</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Asociate a seller</a></li>
+        </ul>
+      </div>
+
+      <div class="col-md-5 offset-md-1 mb-3">
           <form>
             <h5>Suscríbete a nuestro boletín</h5>
             <p>Resumen mensual de lo nuevo y emocionante de nuestra parte.</p>
@@ -777,26 +771,26 @@ body[data-bs-theme="light"] #logo-servitel {
               <button class="btn btn-primary" type="button">Suscribirse</button>
             </div>
           </form>
-        </div>
       </div>
-      <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-        <p>&copy; 2025 Servitelecomunicaciones SAS. Todos los derechos reservados.</p>
-        <ul class="list-unstyled d-flex justify-content-center ">
-          <h6>Conectar con seller:</h6><br>
-          <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="48" height="48">
-                <use xlink:href="#twitter" /></svg></a></li>
-          <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="48" height="48">
-                <use xlink:href="#instagram" /></svg></a></li>
-          <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="48" height="48">
-                <use xlink:href="#facebook" /></svg></a></li>
-        </ul>
-      </div>
-    </footer>
-  </div>
-  <script src="assets/plantilla/bootstrap_5.3.3/assets/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- <script src="assets/js/carrito.js" ></script>
-<script src="assets/js/funcionmenu.js" ></script>
-<script src="assets/js/carrusel.js" ></script> -->
-</body>
+    </div>
 
+    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+      <p>&copy; 2025 Servitelecomunicaciones SAS. Todos los derechos reservados.</p>
+      <ul class="list-unstyled d-flex justify-content-center ">
+        <h6>Conectar con seller:</h6><br>
+        <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="48" height="48"><use xlink:href="#twitter"/></svg></a></li>
+        <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="48" height="48"><use xlink:href="#instagram"/></svg></a></li>
+        <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="48" height="48"><use xlink:href="#facebook"/></svg></a></li>
+      </ul>
+    </div>
+  </footer>
+</div>
+
+<script src="assets/plantilla/bootstrap_5.3.3/assets/dist/js/bootstrap.bundle.min.js"></script>
+<!-- <script src="assets/js/carrito.js" ></script>
+<script src="assets/js/funcionmenu.js" ></script> -->
+<script src="assets/js/carrusel.js" ></script>
+
+    </body>
 </html>
+

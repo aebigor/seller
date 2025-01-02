@@ -1,6 +1,7 @@
 <?php
 
     ob_start();
+
     
     require_once "models/Database.php";
 
@@ -27,5 +28,5 @@
     }
 
     ob_end_flush();
-     
+
 ?>

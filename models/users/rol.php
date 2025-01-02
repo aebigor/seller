@@ -220,7 +220,7 @@
                         if ($usuario && password_verify($passCorreo, $usuario['passCorreo'])) {
                             // Contraseña válida, redirecciona según el rol
                             if($usuario['rol'] === 'Vendedor') {
-                                header("Location: ?c=menuV");
+                                header("Location: ?c=MenuV");
                                 exit();
                             } else if ($usuario['rol'] === 'Usuario'){
                                 header("Location: ?c=MenuU");

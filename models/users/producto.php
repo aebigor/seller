@@ -156,7 +156,7 @@ class Producto {
 
   public function fetchAllProductos() {
     try {
-        $sql = "SELECT * FROM productos";
+        $sql = "SELECT * FROM productos WHERE cantidad > 0";
         $stmt = $this->dbh->prepare($sql);
         $stmt->execute();
         $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -168,7 +168,7 @@ class Producto {
 
 public function getProductById($id) {
     try {
-        $sql = "SELECT * FROM productos WHERE id = :id";
+        $sql = "SELECT * FROM productos WHERE id = :id " ;
         $stmt = $this->dbh->prepare($sql);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();

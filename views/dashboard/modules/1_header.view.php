@@ -5,7 +5,7 @@ session_start();
 // Verificar si la sesión está activa y si el rol del usuario es 'Admin'
 if (!isset($_SESSION['correo']) || !isset($_SESSION['rol']) || $_SESSION['rol'] !== 'Admin') {
     // Si no existe sesión o el rol no es 'Admin', redirigir al login o a otra página
-    header("Location: ?c=Roles&a=validar");
+    header("Location: ?c=Roles&a=validate");
     exit();
 }
 

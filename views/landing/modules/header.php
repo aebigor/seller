@@ -21,7 +21,7 @@
                     <li><a href="#">servicios</a></li>
                     <li><a href="#">categoria</a></li>
                     <li><a href="#">contacto</a></li>
-                    <li><a href="?c=Roles&a=validar" >inicio sesion</a></li>
+                    <li><a href="?c=Roles&a=validate" >inicio sesion</a></li>
                     <li><a href="?c=Roles&a=mostrarFormularioRol" >registrar</a></li>
                     
                 </ul>

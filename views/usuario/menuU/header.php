@@ -25,7 +25,7 @@
                 <li><a href="#">servicios</a></li>
                 <li><a href="#">productos</a></li>
                 <li><a href="#">contacto</a></li>
-                <li><a href="?c=MenuU&a=cerrarSecion">cerrar secion</a></li>
+                <li><a href="?c=MenuU&a=cerrarSecion">cerrar sesión</a></li>
             </ul>
             <div class="botons">
             </div>

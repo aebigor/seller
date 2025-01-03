@@ -4,7 +4,7 @@
 				<a href="#" class="float-left show-nav-lateral">
 					<i class="fas fa-exchange-alt"></i>
 				</a>
-				<a href="#" class="btn-exit-system" title="Cerrar Sesion">
+				<a href="?c=menuA&a=log_out" class="btn-exit-system" title="Cerrar Sesion">
 					<i class="fas fa-power-off"></i>
 				</a>
 			</nav>

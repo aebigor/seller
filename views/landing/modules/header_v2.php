@@ -191,6 +191,9 @@
       opacity: 1;
       /* Asegurarse de que sea completamente visible */
     }
+
+    /*estilos para el carrousel*/
+
   </style>
 </head>
 
@@ -351,24 +354,21 @@
   </nav>
   <div class="container col-xxl-8 ">
     <div class="row flex-lg-row-reverse align-items-center g-5">
-      <div class="col-10 col-sm-8 col-lg-6">
-        <!--
-        <div id="drag-container">
-          <div id="spin-container">
-            <?php
-                  require_once "controllers/oferta.php";
 
-                  $oferta = new Oferta(); // Crear una instancia de la clase Oferta
-                  $imagenesOfertas = $oferta->obtenerImagenesOfertas(); // Llamar a la función
 
-                  foreach ($imagenesOfertas as $imagen) {
-                      echo "<img src='" . $imagen . "' alt='Oferta'>";
-                  }
-                  ?>
-          </div>
-          <div id="ground"></div>
-        </div>-->
-      </div>
+
+
+<div class="col-10 col-sm-8 col-lg-6">
+
+
+
+
+
+</div>
+
+
+
+
       <div class="col-lg-6">
         <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-1">Llego la navidad</h1>
         <p class="lead">¡ Y papa noel trajo las mejores ofertas para esta navidad!</p>

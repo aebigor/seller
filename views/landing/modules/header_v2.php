@@ -193,7 +193,114 @@
     }
 
     /*estilos para el carrousel*/
+    #ground {
+      width: 900px;
+      height: 900px;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%) rotateX(90deg);
+      transform: translate(-50%, 50%) rotatex(90deg);
+      background: -webkit-radial-gradient(center center, farthest-side, #9993, transparent);
 
+    }
+
+    @-webkit-keyframes spin {
+      from {
+        -webkit-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+      }
+
+      to {
+        -webkit-transform: rotateY(360deg);
+        transform: rotateY(360deg);
+      }
+    }
+
+    @keyframes spin {
+      from {
+        -webkit-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+      }
+
+      to {
+        -webkit-transform: rotateY(360deg);
+        transform: rotateY(360deg);
+      }
+    }
+
+    @-webkit-keyframes spinRevert {
+      from {
+        -webkit-transform: rotateY(360deg);
+        transform: rotateY(360deg);
+      }
+
+      to {
+        -webkit-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+      }
+    }
+
+    @keyframes spinRevert {
+      from {
+        -webkit-transform: rotateY(360deg);
+        transform: rotateY(360deg);
+      }
+
+      to {
+        -webkit-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+      }
+    }
+
+    #drag-container,
+    #spin-container {
+      position: relative;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      margin: auto;
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+      -webkit-transform: rotateX(-10deg);
+      transform: rotateX('-10deg');
+    }
+
+    #drag-container img,
+    #drag-container video {
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      line-height: 200px;
+      font-size: 50px;
+      text-align: center;
+      -webkit-box-shadow: 0 0 8px #fff;
+      box-shadow: 0 0 #fff;
+      -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #0005);
+    }
+
+    #drag-container img:hover,
+    #drag-container video:hover {
+      -webkit-box-shadow: 0 0 15px #fff;
+      box-shadow: 0 0 15px #fff;
+      -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #0006);
+
+    }
+
+    #drag-container p {
+      font-family: serif;
+      position: absolute;
+      padding-top: 100%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%) rotateX(90deg);
+      transform: translate(-50%, -50%) rotateX(90deg);
+      color: #000;
+
+    }
   </style>
 </head>
 
@@ -345,7 +452,7 @@
         <!-- Alineación del carrito a la derecha -->
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item d-flex align-items-center">
-            <img id="img-carrito" src="img/car.svg" alt="car" style="width: 24px; height: auto;">
+            <img id="img-carrito" src="img/car.svg" alt="car" style="width: 36px; height: auto;">
             <div id="total-carrito" class="ms-2">$0.00</div>
           </li>
         </ul>
@@ -354,21 +461,22 @@
   </nav>
   <div class="container col-xxl-8 ">
     <div class="row flex-lg-row-reverse align-items-center g-5">
+      <div class="col-10 col-sm-8 col-lg-6 py-5">
 
+        <div id="drag-container">
+          <div id="spin-container">
+            <!--img del carrusel -->
+            <img src="assets/imagenes/Celulares/iPhone 16 Pro Max 256GB 5G/1sf.png" alt="">
+            <img src="assets/imagenes/Computadores/Portátil Lenovo V14 G5 Ci3 256GB SSD + Maleta/2sf.png" alt="">
+            <img src="assets/imagenes/televisores/TV Panasonic 50 Led 4K FHD Smart TV Android 50MX700/1sf.png" alt="">
+            <img src="assets/imagenes/Celulares/iPhone 16 Pro Max 256GB 5G/1sf.png" alt="">
+            <img src="assets/imagenes/Computadores/Portátil Lenovo V14 G5 Ci3 256GB SSD + Maleta/2sf.png" alt="">
+            <img src="assets/imagenes/televisores/TV Panasonic 50 Led 4K FHD Smart TV Android 50MX700/1sf.png" alt="">
+          </div>
+          <div id="ground"></div>
+        </div>
 
-
-
-<div class="col-10 col-sm-8 col-lg-6">
-
-
-
-
-
-</div>
-
-
-
-
+      </div>
       <div class="col-lg-6">
         <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-1">Llego la navidad</h1>
         <p class="lead">¡ Y papa noel trajo las mejores ofertas para esta navidad!</p>
@@ -560,37 +668,36 @@
       <h4 id="scrollspyHeading4"></h4>
       <br>
       <h1 class="text-center">Contacto</h1>
-      <br>
       <section>
-        <div class="container">
-          <div class="card">
-            <div class="row">
-              <div class="col-6 my-2 py-2">
-                <label>Nombres y Apellidos: </label>
-                <input class="form-control" type="text" name="">
-              </div>
-              <div class="col-6 my-2 py-2">
-                <label>Telefono: </label>
-                <input class="form-control" type="text" name="">
-              </div>
-              <div class="col-6 my-2 py-2">
-                <label>Correo: </label>
-                <input class="form-control" type="text" name="">
-              </div>
-              <div class="col-6 my-2 py-2">
-                <label>Asunto: </label>
-                <input class="form-control" type="text" name="">
-              </div>
-              <div class="col-12 my-2 py-2">
-                <label>Contenido del Correo: </label>
-                <textarea class="form-control form-control-lg" id="message" name="message" rows="4" required></textarea>
-              </div>
-              <div class="form-row mb-3">
-                <div class="form-group">
-                  <label class="form-label">¿Cómo prefieres recibir nuestra respuesta?</label><br>
+        <div class="container my-5">
+          <div class="card shadow-sm rounded-5">
+            <div class="card-body px-4 py-5">
+              <h4 class="text-center mb-4">Formulario de Contacto</h4>
+              <div class="row gy-3">
+                <div class="col-12 col-md-6">
+                  <label for="name" class="form-label">Nombres y Apellidos:</label>
+                  <input class="form-control" type="text" id="name" name="name" placeholder="Ingrese su nombre completo">
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="phone" class="form-label">Teléfono:</label>
+                  <input class="form-control" type="text" id="phone" name="phone" placeholder="Ingrese su teléfono">
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="email" class="form-label">Correo:</label>
+                  <input class="form-control" type="email" id="email" name="email" placeholder="Ingrese su correo electrónico">
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="subject" class="form-label">Asunto:</label>
+                  <input class="form-control" type="text" id="subject" name="subject" placeholder="Ingrese el asunto">
+                </div>
+                <div class="col-12">
+                  <label for="message" class="form-label">Contenido del Correo:</label>
+                  <textarea class="form-control form-control-lg" id="message" name="message" rows="4" placeholder="Escribe tu mensaje aquí" required></textarea>
+                </div>
+                <div class="col-12">
+                  <label class="form-label">¿Cómo prefieres recibir nuestra respuesta?</label>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="response" id="responseWhatsapp"
-                      value="whatsapp">
+                    <input class="form-check-input" type="checkbox" name="response" id="responseWhatsapp" value="whatsapp">
                     <label class="form-check-label" for="responseWhatsapp">WhatsApp</label>
                   </div>
                   <div class="form-check form-check-inline">
@@ -598,45 +705,57 @@
                     <label class="form-check-label" for="responseEmail">Correo Electrónico</label>
                   </div>
                 </div>
-              </div>
-              <div class="container">
-                <button class="btn btn-bd-primary-v2">Enviar Solicitud de contacto</button>
+                <div class="col-12 text-center mt-4">
+                  <button class="btn btn-primary btn-lg">Enviar Solicitud de Contacto</button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+
       <br>
       <h4 id="scrollspyHeading5"></h4>
-      <br>
-      <h1 class="text-center">Metodos de pago</h1>
-      <br>
       <section>
-        <div class="container">
-          <div class="row">
-            <div class="col">
-              <button type="button" class="btn btn-warning btn-lg d-flex flex-column align-items-center rounded-5">
-                <i class="fa-solid fa-money-check-dollar fa-3x"></i>
-                <span class="mt-2">Consignación Efecty</span>
-              </button>
+        <div class="container my-5">
+          <h2 class="text-center mb-4">Métodos de Pago</h2>
+          <p class="text-center text-muted">Selecciona el método de pago que prefieras. Cada opción incluye instrucciones detalladas para facilitar el proceso.</p>
+          <div class="row gy-3">
+            <div class="col-12 col-md-3">
+              <div class="card shadow-sm rounded-5">
+                <div class="card-body text-center">
+                  <i class="fa-solid fa-money-check-dollar fa-3x text-warning"></i>
+                  <h5 class="mt-3">Consignación Efecty</h5>
+                  <p class="text-muted">Realiza tu pago en cualquier punto Efecty presentando el número de referencia.</p>
+                </div>
+              </div>
             </div>
-            <div class="col">
-              <button type="button" class="btn btn-primary btn-lg d-flex flex-column align-items-center rounded-5">
-                <i class="fa-solid fa-money-bill-transfer fa-3x"></i>
-                <span class="mt-2">Transferencia</span>
-              </button>
+            <div class="col-12 col-md-3">
+              <div class="card shadow-sm rounded-5">
+                <div class="card-body text-center">
+                  <i class="fa-solid fa-money-bill-transfer fa-3x text-primary"></i>
+                  <h5 class="mt-3">Transferencia</h5>
+                  <p class="text-muted">Haz tu transferencia desde tu cuenta bancaria a nuestra cuenta registrada.</p>
+                </div>
+              </div>
             </div>
-            <div class="col">
-              <button type="button" class="btn btn-success btn-lg d-flex flex-column align-items-center rounded-5">
-                <i class="fa-solid fa-sack-dollar fa-3x"></i>
-                <span class="mt-2">Efectivo</span>
-              </button>
+            <div class="col-12 col-md-3">
+              <div class="card shadow-sm rounded-5">
+                <div class="card-body text-center">
+                  <i class="fa-solid fa-sack-dollar fa-3x text-success"></i>
+                  <h5 class="mt-3">Efectivo</h5>
+                  <p class="text-muted">Puedes pagar en efectivo en nuestras oficinas o al representante autorizado.</p>
+                </div>
+              </div>
             </div>
-            <div class="col">
-              <button type="button" class="btn btn-info btn-lg d-flex flex-column align-items-center rounded-5">
-                <i class="fa-solid fa-landmark fa-3x"></i>
-                <span class="mt-2">Por medio de la cooperativa</span>
-              </button>
+            <div class="col-12 col-md-3">
+              <div class="card shadow-sm rounded-5">
+                <div class="card-body text-center">
+                  <i class="fa-solid fa-landmark fa-3x text-info"></i>
+                  <h5 class="mt-3">Por la Cooperativa</h5>
+                  <p class="text-muted">Usa los servicios de la cooperativa para realizar tus pagos de forma segura.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -659,12 +778,14 @@
                   <p>Por medio de la cooperativa tienes hasta el <strong>23 de diciembre</strong> para hacer la
                     solicitud.</p>
                 </div>
+                <br>
                 <!-- Descuentos exclusivos -->
                 <div class="mb-4">
                   <h4 class="fw-bold">Descuentos exclusivos:</h4>
                   <p>Los descuentos aplican solo para productos seleccionados durante el evento. Verifica la lista de
                     productos en oferta en nuestro <a href="#" class="link-primary">sitio web</a>.</p>
                 </div>
+                <br>
                 <!-- Métodos de pago y tiempos de entrega -->
                 <div class="mb-4">
                   <h4 class="fw-bold">Métodos de pago y tiempos de entrega:</h4>
@@ -672,6 +793,7 @@
                     de 2 a 3 días hábiles máximo.</p>
                   <p><strong>Pago por Cooperativa:</strong> La entrega será entre 3 a 4 días hábiles máximo.</p>
                 </div>
+                <br>
                 <!-- Stock limitado -->
                 <div class="mb-4">
                   <h4 class="fw-bold">Stock limitado:</h4>
@@ -741,9 +863,9 @@
   <script src="assets/plantilla/bootstrap_5.3.3/assets/dist/js/bootstrap.bundle.min.js"></script>
   <?php /*
     <!-- <script src="assets/js/carrito.js" ></script>
-    <script src="assets/js/funcionmenu.js" ></script> -->
-    <script src="assets/js/carrusel.js"></script>
+    <script src="assets/js/funcionmenu.js" ></script> -->    
   */ ?>
+  <script src="assets/js/carrusel.js"></script>
 </body>
 
 </html>

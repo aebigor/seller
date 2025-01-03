@@ -22,9 +22,10 @@ require_once "models/users/user.php";
             // Verificar si se recibieron los datos necesarios del formulario
             public function createRolUsuario(){
                 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-                    require_once "views/usuario/registro/header.php";
-                    require_once "views/usuario/registro/footer.php";
-                    require_once "views/usuario/registro/encabezado.php";
+                    #require_once "views/usuario/registro/header.php";
+                    #require_once "views/usuario/registro/footer.php";
+                    #require_once "views/usuario/registro/encabezado.php";
+                    require_once "views/registry/registry.view.php";
                 } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     // Verificar si todos los datos necesarios están presentes
                     if (isset($_POST['nombre'], $_POST['apellidos'], $_POST['correo'], $_POST['passCorreo'])) {
@@ -156,10 +157,11 @@ require_once "models/users/user.php";
             session_start();
             // Si la solicitud es GET, simplemente cargamos la vista del formulario de inicio de sesión
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-                require_once "views/inicio-secion/header.php";
-               // Aquí deberías incluir tu formulario de inicio de sesión
-                require_once "views/inicio-secion/footer.php";
-                require_once "views/inicio-secion/encabezado.php";
+                #require_once "views/inicio-secion/header.php";
+                // Aquí deberías incluir tu formulario de inicio de sesión
+                #require_once "views/inicio-secion/footer.php";
+                #require_once "views/inicio-secion/encabezado.php";
+                require_once "views/login/login.view.php";
             }
         
             // Si la solicitud es POST, intentamos validar el inicio de sesión

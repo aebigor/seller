@@ -181,11 +181,7 @@ require_once "models/users/user.php";
                      header("Location: ?c=menuU");
                     exit();
                 } else {
-                    // Si la validación falla, volvemos a mostrar el formulario de inicio de sesión con un mensaje de error
-                    require_once "views/inicio-secion/header.php";
-                   // Aquí deberías incluir tu formulario de inicio de sesión
-                    require_once "views/inicio-secion/footer.php";
-                    echo "Usuario o contraseña incorrectos"; // Puedes mostrar un mensaje de error en el formulario
+                    header("Location: ?c=Roles&a=validar&m=loginFailed");
                 }
             }
         }

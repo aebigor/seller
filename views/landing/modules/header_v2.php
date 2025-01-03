@@ -410,7 +410,7 @@
   </script>
   <nav class="navbar navbar-expand-lg bg-body-white rounded-3 ">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="index.php">
         <img class="mx-5" id="logo-servitel" src="assets/imagenes/landing/logo_servitel.png" alt="Logo"
           style="width: 100px; height: auto; margin-right: 10px;">
       </a>

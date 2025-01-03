@@ -223,7 +223,7 @@
                                 header("Location: ?c=menuV");
                                 exit();
                             } else if ($usuario['rol'] === 'Usuario'){
-                                header("Location: ?c=menuU");
+                                #header("Location: ?c=Landing&a=main");
                                 exit();
                             } else if ($usuario['rol'] === 'Admin'){
                                 header("Location: ?c=menuA");

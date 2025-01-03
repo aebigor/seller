@@ -178,7 +178,7 @@ require_once "models/users/user.php";
         
                 if ($validacion_exitosa) {
                     // Si la validación es exitosa, redirigimos al usuario a la página de menú
-                     header("Location: ?c=menuU");
+                     header("Location: ?c=Landing&a=main&m=desdeCtlr");
                     exit();
                 } else {
                     header("Location: ?c=Roles&a=validar&m=loginFailed");

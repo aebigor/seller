@@ -1,3 +1,23 @@
+<?php
+// Iniciar la sesión al inicio de la vista
+session_start();
+
+// Verificar si la sesión está activa (si 'sesion_status' está definida)
+if (isset($_SESSION['sesion_status']) && $_SESSION['sesion_status'] === 'ok') {
+    // Si la sesión está activa, imprimir los datos de la sesión
+    echo "<p>Bienvenido, " . $_SESSION['nombre'] . " " . $_SESSION['apellido'] . "</p>";
+    echo "<p>Correo: " . $_SESSION['correo'] . "</p>";
+    echo "<p>Rol: " . $_SESSION['rol'] . "</p>";
+    // Puedes imprimir más datos si los tienes en la sesión
+    // Ejemplo:
+    // echo "<p>ID: " . $_SESSION['id'] . "</p>";
+} else {
+    // Si no existe sesión activa, no hacer nada (no imprimir nada)
+    // O podrías redirigir al login si lo prefieres
+    echo "<p>No estás logueado. Por favor, <a href='?c=Roles&a=validar'>inicia sesión</a></p>";
+}
+?>
+
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
 
@@ -446,7 +466,10 @@
         <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link active btn-bd-primary-v2 border text-white rounded-3" aria-current="page"
-              href="?c=Roles&a=validar">Registrarse / Iniciar Sesion</a>
+               href="<?= isset($_SESSION['sesion_status']) && $_SESSION['sesion_status'] === 'ok' ? '?c=MenuA&a=log_out' : '?c=Roles&a=validar' ?>">
+               <?= isset($_SESSION['sesion_status']) && $_SESSION['sesion_status'] === 'ok' ? 'Cerrar sesión' : 'Registrarse / Iniciar Sesion' ?>
+            </a>
+
           </li>
         </ul>
         <!-- Alineación del carrito a la derecha -->

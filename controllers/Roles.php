@@ -153,38 +153,61 @@ require_once "models/users/user.php";
                     echo "Por favor, complete todos los campos del formulario.";
                 }
             }}
-        public function validar() {
+
+
+
+public function validar() {
+    // Si la solicitud es GET, simplemente cargamos la vista del formulario de inicio de sesión
+    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+        require_once "views/login/login.view.php";  // Cargar la vista de login
+    }
+
+    // Si la solicitud es POST, intentamos validar el inicio de sesión
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        require_once "models/users/rol.php"; // Incluye la clase que contiene la función validarRol
+        
+        $rol = new rol(); // Crea una instancia de la clase rol
+        
+        $correo = $_POST['correo']; // Obtén el correo electrónico enviado por POST
+        $passCorreo = $_POST['passCorreo']; // Obtén la contraseña enviada por POST
+        
+        // Realiza la validación del rol
+        $usuario = $rol->validarRol($correo, $passCorreo);
+        
+        if ($usuario) {
+            // Si la validación es exitosa, se crea la sesión y se redirige al usuario
             session_start();
-            // Si la solicitud es GET, simplemente cargamos la vista del formulario de inicio de sesión
-            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-                #require_once "views/inicio-secion/header.php";
-                // Aquí deberías incluir tu formulario de inicio de sesión
-                #require_once "views/inicio-secion/footer.php";
-                #require_once "views/inicio-secion/encabezado.php";
-                require_once "views/login/login.view.php";
+            
+            // Guardamos todos los datos del usuario en la sesión
+            $_SESSION['sesion_status'] = 'ok';  // estado de sesion usuario            
+            $_SESSION['id'] = $usuario['id'];  // ID del usuario            
+            $_SESSION['nombre'] = $usuario['nombre'];  // Nombre del usuario
+            $_SESSION['apellido'] = $usuario['apellido'];  // apellido del usuario
+            $_SESSION['correo'] = $usuario['correo'];  // Correo electrónico
+            $_SESSION['rol'] = $usuario['rol'];  // Rol del usuario
+            var_dump($_SESSION);
+            
+            // Redirigir según el rol
+            
+            if ($usuario['rol'] === 'Vendedor') {
+                header("Location: ?c=menuV");  // Redirigir a la vista de Vendedor
+            } else if ($usuario['rol'] === 'Usuario') {
+                header("Location: ?c=Landing&a=main");  // Redirigir a la vista de Usuario
+            } else if ($usuario['rol'] === 'Admin') {
+                header("Location: ?c=menuA");  // Redirigir a la vista de Admin
             }
-        
-            // Si la solicitud es POST, intentamos validar el inicio de sesión
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                require_once "models/users/rol.php"; // Incluye la clase que contiene la función validarRol
-        
-                $rol = new rol(); // Crea una instancia de la clase rol
-        
-                $correo = $_POST['correo']; // Obtén el correo electrónico enviado por POST
-                $passCorreo = $_POST['passCorreo']; // Obtén la contraseña enviada por POST
-        
-                // Realiza la validación del rol
-                $validacion_exitosa = $rol->validarRol($correo, $passCorreo);
-        
-                if ($validacion_exitosa) {
-                    // Si la validación es exitosa, redirigimos al usuario a la página de menú
-                     header("Location: ?c=Landing&a=main&m=desdeCtlr");
-                    exit();
-                } else {
-                    header("Location: ?c=Roles&a=validar&m=loginFailed");
-                }
-            }
+            exit();
+
+        } else {
+            // Si la validación falla, redirigimos a la página de login con mensaje de error
+            header("Location: ?c=Roles&a=validar&m=loginFailed");
+            exit();
         }
+    }
+}
+
+
+
         
         
         public function createRolAdmin(){

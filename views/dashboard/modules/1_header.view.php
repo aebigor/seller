@@ -1,3 +1,17 @@
+<?php
+// Iniciamos la sesión al inicio de la vista
+session_start();
+
+// Verificar si la sesión está activa y si el rol del usuario es 'Admin'
+if (!isset($_SESSION['correo']) || !isset($_SESSION['rol']) || $_SESSION['rol'] !== 'Admin') {
+    // Si no existe sesión o el rol no es 'Admin', redirigir al login o a otra página
+    header("Location: ?c=Roles&a=validar");
+    exit();
+}
+
+// Si pasa la validación, continuar con la carga del dashboard del admin
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>

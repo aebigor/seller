@@ -10,7 +10,7 @@
         public  function cerrarSecion(){
             session_start();
             session_destroy();
-            header("Location: ?c=menu ");
+            header("Location: ?c=Menu ");
         }
     }
 ?>

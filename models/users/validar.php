@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($resultado->num_rows == 1) {
         // Inicio de sesión exitoso
         $_SESSION['correo'] = $username;
-        header("Location: menu.php"); // Redirigir a la página de inicio después del inicio de sesión
+        header("Location: menud.php"); // Redirigir a la página de inicio después del inicio de sesión
         exit;
     } else {
         // Nombre de usuario o contraseña incorrectos

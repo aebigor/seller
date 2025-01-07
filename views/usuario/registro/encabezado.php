@@ -3,7 +3,7 @@
 <head>
 <title>menu</title>
 <meta charset="UTF-8">
-<link rel ="stylesheet" href="asset/css/registro.css" type="text/css">
+<link rel ="stylesheet" href="assets/css/registro.css" type="text/css">
 <style>
 </style>
 </head>

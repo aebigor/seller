@@ -3,7 +3,7 @@
     ob_start();
 
     
-    require_once "models/Database.php";
+    require_once "models/DataBase.php";
 
     if(!isset($_REQUEST['c'])){
 

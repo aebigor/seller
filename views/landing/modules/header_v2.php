@@ -5,8 +5,8 @@ session_start();
 // Verificar si la sesión está activa (si 'sesion_status' está definida)
 if (isset($_SESSION['sesion_status']) && $_SESSION['sesion_status'] === 'ok') {
     // Si la sesión está activa, imprimir los datos de la sesión
-    echo "<p>Bienvenido, " . $_SESSION['nombre'] . " " . $_SESSION['apellido'] . "</p>";
-    echo "<p>Correo: " . $_SESSION['correo'] . "</p>";
+    echo "<p>Bienvenido, " . $_SESSION['name'] . " " . $_SESSION['lastname'] . "</p>";
+    echo "<p>Correo: " . $_SESSION['email'] . "</p>";
     echo "<p>Rol: " . $_SESSION['rol'] . "</p>";
     // Puedes imprimir más datos si los tienes en la sesión
     // Ejemplo:
@@ -466,7 +466,7 @@ if (isset($_SESSION['sesion_status']) && $_SESSION['sesion_status'] === 'ok') {
         <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link active btn-bd-primary-v2 border text-white rounded-3" aria-current="page"
-               href="<?= isset($_SESSION['sesion_status']) && $_SESSION['sesion_status'] === 'ok' ? '?c=MenuA&a=log_out' : '?c=Roles&a=validar' ?>">
+               href="<?= isset($_SESSION['sesion_status']) && $_SESSION['sesion_status'] === 'ok' ? '?c=MenuA&a=log_out' : '?c=Roles&a=validate' ?>">
                <?= isset($_SESSION['sesion_status']) && $_SESSION['sesion_status'] === 'ok' ? 'Cerrar sesión' : 'Registrarse / Iniciar Sesion' ?>
             </a>
 

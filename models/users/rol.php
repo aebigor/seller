@@ -169,7 +169,7 @@
                         $passCifrada = password_hash($_POST['passCorreo'], PASSWORD_DEFAULT);
                         
                         // Preparar la consulta SQL para insertar un nuevo usuario
-                        $sql = 'INSERT INTO usuario (nombre, apellido, correo, passCorreo, rol) VALUES (:nombre, :apellidos, :correo, :passCorreo, :rol)';
+                        $sql = 'INSERT INTO user (name, lastname, email, pass, rol) VALUES (:nombre, :apellidos, :correo, :passCorreo, 2)';
                         
                         if ($stmt = $this->dbh->prepare($sql)) {
                             // Vincular parámetros
@@ -178,8 +178,6 @@
                             $stmt->bindParam(':apellidos', $_POST['apellidos']);
                             $stmt->bindParam(':correo', $_POST['correo']);
                             $stmt->bindParam(':passCorreo', $passCifrada);
-                            $stmt->bindParam(':rol', $_POST['usuario'
-                        ]);
                             #echo($_POST);
                             // Ejecutar la consulta
                             $stmt->execute();
@@ -199,7 +197,6 @@
                 die("Error en la consulta: " . $e->getMessage());
             }
         }
-        
 
 
 public function validarRol($correo, $passCorreo) {
@@ -207,7 +204,7 @@ public function validarRol($correo, $passCorreo) {
         // Verificar si la conexión a la base de datos está establecida
         if ($this->dbh) {
             // Preparar la consulta SQL para buscar el usuario por correo electrónico y contraseña cifrada
-            $sql = 'SELECT * FROM usuario WHERE correo = :correo';
+            $sql = 'SELECT * FROM user WHERE email = :correo';
 
             if ($stmt = $this->dbh->prepare($sql)) {
                 // Vincular parámetros
@@ -219,7 +216,7 @@ public function validarRol($correo, $passCorreo) {
                 // Obtener el resultado
                 $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-                if ($usuario && password_verify($passCorreo, $usuario['passCorreo'])) {
+                if ($usuario && password_verify($passCorreo, $usuario['pass'])) {
                     // Si la contraseña es válida, retornamos todos los datos del usuario
                     return $usuario; // Devolvemos el array completo con todos los datos
                 } else {

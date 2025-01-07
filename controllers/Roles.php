@@ -18,75 +18,43 @@ require_once "models/users/user.php";
         }
 
 
-        // Registrar Rol  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            // Verificar si se recibieron los datos necesarios del formulario
-            public function createRolUsuario(){
-                if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-                    #require_once "views/usuario/registro/header.php";
-                    #require_once "views/usuario/registro/footer.php";
-                    #require_once "views/usuario/registro/encabezado.php";
-                    require_once "views/registry/registry.view.php";
-                } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                    // Verificar si todos los datos necesarios están presentes
-                    if (isset($_POST['nombre'], $_POST['apellidos'], $_POST['correo'], $_POST['passCorreo'])) {
-                        $usuario = 'Usuario'; // Asigna el rol de usuario automáticamente
-                        $rol = new Rol(
-                            $_POST['nombre'],
-                            $_POST['apellidos'],
-                            $_POST['correo'],
-                            $_POST['passCorreo'],
-                            $_POST['usuario'] = $usuario
-                        );
-                    // Mostrar datos recibidos para verificar 
-                    // print_r($_POST);
-                    // // Mostrar datos de la instancia de Rol para verificar
-                    // print_r($rol);
-                    // Intentar crear el rol en la base de datos
-                    try {
-                        $rol->createRol();
-                         header("Location: ?c=Roles&a=validar");
-                    } catch (Exception $e) {
-                        echo "Error al crear el rol: " . $e->getMessage();
-                    }
-                } else {
-                    echo "Por favor, complete todos los campos del formulario.";
+    // Registrar Rol  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Verificar si se recibieron los datos necesarios del formulario
+    public function createRolUsuario()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            #require_once "views/usuario/registro/header.php";
+            #require_once "views/usuario/registro/footer.php";
+            #require_once "views/usuario/registro/encabezado.php";
+            require_once "views/registry/registry.view.php";
+        } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Verificar si todos los datos necesarios están presentes
+            if (isset($_POST['nombre'], $_POST['apellidos'], $_POST['correo'], $_POST['passCorreo'])) {
+                $usuario = 'Usuario'; // Asigna el rol de usuario automáticamente
+                $rol = new Rol(
+                    $_POST['nombre'],
+                    $_POST['apellidos'],
+                    $_POST['correo'],
+                    $_POST['passCorreo'],
+                    $_POST['usuario'] = $usuario
+                );
+                // Mostrar datos recibidos para verificar 
+                // print_r($_POST);
+                // // Mostrar datos de la instancia de Rol para verificar
+                // print_r($rol);
+                // Intentar crear el rol en la base de datos
+                try {
+                    $rol->createRol();
+                    header("Location: ?c=Roles&a=validate");
+                } catch (Exception $e) {
+                    echo "Error al crear el rol: " . $e->getMessage();
                 }
-            }}
-            public function createRolUsuarioA(){
-                if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-                            
-                    require_once "views/administrador/menu/header.php";
-                    // require_once "views/administrador/menu/categori.php";
-                    require_once "views/administrador/menu/footer.php";
-                    require_once "views/usuario/registro/header.php";
-                    require_once "views/usuario/registro/footer.php";
-                    require_once "views/usuario/registro/encabezado.php";
-                } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                    // Verificar si todos los datos necesarios están presentes
-                    if (isset($_POST['nombre'], $_POST['apellidos'], $_POST['correo'], $_POST['passCorreo'])) {
-                        $usuario = 'Usuario'; // Asigna el rol de usuario automáticamente
-                        $rol = new Rol(
-                            $_POST['nombre'],
-                            $_POST['apellidos'],
-                            $_POST['correo'],
-                            $_POST['passCorreo'],
-                            $_POST['usuario'] = $usuario
-                        );
-                    // Mostrar datos recibidos para verificar 
-                    // print_r($_POST);
-                    // // Mostrar datos de la instancia de Rol para verificar
-                    // print_r($rol);
-                    // Intentar crear el rol en la base de datos
-                    try {
-                        $rol->createRol();
-                         header("Location: ?c=Roles&a=validar");
-                    } catch (Exception $e) {
-                        echo "Error al crear el rol: " . $e->getMessage();
-                    }
-                } else {
-                    echo "Por favor, complete todos los campos del formulario.";
-                }
-            }}
+            } else {
+                echo "Por favor, complete todos los campos del formulario.";
+            }
+        }
+    }
+
             public function createRolVendedor(){
                 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                     require_once "views/vendedor/registroV/header.php";
@@ -156,55 +124,60 @@ require_once "models/users/user.php";
 
 
 
-public function validar() {
-    // Si la solicitud es GET, simplemente cargamos la vista del formulario de inicio de sesión
-    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-        require_once "views/login/login.view.php";  // Cargar la vista de login
-    }
+    public function validate()
+    {
+        // Si la solicitud es GET, simplemente cargamos la vista del formulario de inicio de sesión
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            require_once "views/login/login.view.php";  // Cargar la vista de login
+        }
 
-    // Si la solicitud es POST, intentamos validar el inicio de sesión
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        require_once "models/users/rol.php"; // Incluye la clase que contiene la función validarRol
-        
-        $rol = new rol(); // Crea una instancia de la clase rol
-        
-        $correo = $_POST['correo']; // Obtén el correo electrónico enviado por POST
-        $passCorreo = $_POST['passCorreo']; // Obtén la contraseña enviada por POST
-        
-        // Realiza la validación del rol
-        $usuario = $rol->validarRol($correo, $passCorreo);
-        
-        if ($usuario) {
-            // Si la validación es exitosa, se crea la sesión y se redirige al usuario
-            session_start();
-            
-            // Guardamos todos los datos del usuario en la sesión
-            $_SESSION['sesion_status'] = 'ok';  // estado de sesion usuario            
-            $_SESSION['id'] = $usuario['id'];  // ID del usuario            
-            $_SESSION['nombre'] = $usuario['nombre'];  // Nombre del usuario
-            $_SESSION['apellido'] = $usuario['apellido'];  // apellido del usuario
-            $_SESSION['correo'] = $usuario['correo'];  // Correo electrónico
-            $_SESSION['rol'] = $usuario['rol'];  // Rol del usuario
-            var_dump($_SESSION);
-            
-            // Redirigir según el rol
-            
-            if ($usuario['rol'] === 'Vendedor') {
-                header("Location: ?c=menuV");  // Redirigir a la vista de Vendedor
-            } else if ($usuario['rol'] === 'Usuario') {
-                header("Location: ?c=Landing&a=main");  // Redirigir a la vista de Usuario
-            } else if ($usuario['rol'] === 'Admin') {
-                header("Location: ?c=menuA");  // Redirigir a la vista de Admin
+        // Si la solicitud es POST, intentamos validar el inicio de sesión
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            require_once "models/users/rol.php"; // Incluye la clase que contiene la función validarRol
+
+            $rol = new rol(); // Crea una instancia de la clase rol
+
+            $correo = $_POST['correo']; // Obtén el correo electrónico enviado por POST
+            $passCorreo = $_POST['passCorreo']; // Obtén la contraseña enviada por POST
+
+            // Realiza la validación del rol
+            $usuario = $rol->validarRol($correo, $passCorreo);
+
+            if ($usuario) {
+                // Si la validación es exitosa, se crea la sesión y se redirige al usuario
+                session_start();
+
+                // Guardamos todos los datos del usuario en la sesión
+                $_SESSION['sesion_status'] = 'ok';  // estado de sesion usuario            
+                $_SESSION['id_user'] = $usuario['id_user'];  // ID del usuario            
+                $_SESSION['name'] = $usuario['name'];  // Nombre del usuario
+                $_SESSION['lastname'] = $usuario['lastname'];  // apellido del usuario
+                $_SESSION['id_number'] = $usuario['id_number'];  // Correo electrónico
+                $_SESSION['cel'] = $usuario['cel'];  // Rol del usuario
+                $_SESSION['email'] = $usuario['email'];
+                $_SESSION['rol'] = $usuario['rol'];
+
+                // var_dump($_SESSION);
+
+                // Redirigir según el rol
+
+                if ($_SESSION['rol'] == 3) {
+                    header("Location: ?c=menuV");  // Redirigir a la vista de Vendedor
+                }
+                if ($_SESSION['rol'] == 2) {
+                    header("Location: ?c=Landing&a=main");  // Redirigir a la vista de Usuario
+                }
+                if ($_SESSION['rol'] == 1) {
+                    header("Location: ?c=MenuA&a=main");  // Redirigir a la vista de Admin
+                }
+
+            } else {
+                // Si la validación falla, redirigimos a la página de login con mensaje de error
+                header("Location: ?c=Roles&a=validate&m=loginFailed");
+                exit();
             }
-            exit();
-
-        } else {
-            // Si la validación falla, redirigimos a la página de login con mensaje de error
-            header("Location: ?c=Roles&a=validar&m=loginFailed");
-            exit();
         }
     }
-}
 
 
 

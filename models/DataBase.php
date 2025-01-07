@@ -8,7 +8,7 @@
 
             $port = "3306";
 
-            $database = "pentland"; // ajustar (nombre BD) en qa servidor de pruebas
+            $database = "seller"; // ajustar (nombre BD) en qa servidor de pruebas
 
             $username = "root";     // ajustar (usuario BD) en qa servidor de pruebas
 

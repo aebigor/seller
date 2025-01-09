@@ -214,6 +214,7 @@
 
                         // Obtener el resultado
                         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+<<<<<<< HEAD
 
                         if ($usuario && password_verify($passCorreo, $usuario['pass'])) {
                             // Si la contraseña es válida, retornamos todos los datos del usuario
@@ -223,6 +224,26 @@
                             return false;
                         }
                     }
+=======
+        
+                        if ($usuario && password_verify($passCorreo, $usuario['passCorreo'])) {
+                            // Contraseña válida, redirecciona según el rol
+                            if($usuario['rol'] === 'Vendedor') {
+                                header("Location: ?c=MenuV");
+                                exit();
+                            } else if ($usuario['rol'] === 'Usuario'){
+                                header("Location: ?c=MenuU");
+                                exit();
+                            } else if ($usuario['rol'] === 'Admin'){
+                                header("Location: ?c=menuA");
+                                exit();
+                            }  else {
+                                header("Location: ?c=Menu");
+                                exit();
+                            }
+                        }   
+                    } 
+>>>>>>> 63330db648b288c321d09f5a14b56ed178fa1f39
                 }
             } catch (PDOException $e) {
                 // Captura y maneja los errores de PDO

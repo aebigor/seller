@@ -22,56 +22,39 @@ function comprarElemento(elemento) {
         id: elemento.querySelector('.agregar-carrito').getAttribute('data-id'),
         cantidad: 1
     };
+    agregarAlCarrito(infoElemento);
 
-    // Verificar la cantidad disponible en la base de datos
-    fetch('/seller/controllers/verificar_cantidad.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ id: infoElemento.id })
+    // Realizamos la llamada al backend para actualizar la cantidad del producto en la base de datos
+fetch('/seller/controllers/actualizar_producto.php', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        id: infoElemento.id,
+        cantidad: -1 // Restamos una unidad
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            // Si hay suficientes productos, agregar al carrito
-            if (data.cantidadDisponible >= infoElemento.cantidad) {
-                agregarAlCarrito(infoElemento);
-                // Llamada al backend para actualizar la cantidad en la base de datos
-                fetch('/seller/controllers/actualizar_producto.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        id: infoElemento.id,
-                        cantidad: -1 // Restamos una unidad
-                    })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        console.log('Cantidad del producto actualizada correctamente');
-                    } else {
-                        console.log('Error al actualizar la cantidad:', data.message);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error al realizar la solicitud:', error);
-                });
-            } else {
-                alert('No hay suficientes productos disponibles en stock');
-            }
-        } else {
-            console.error('Error al verificar la cantidad', data.message);
-        }
-    })
-    .catch(error => {
-        console.error('Error en la solicitud para verificar cantidad:', error);
-    });
-
-
-
+})
+.then(response => {
+    // Verifica si la respuesta es correcta
+    console.log('Respuesta del servidor:', response);
+    // Asegúrate de que la respuesta tenga el tipo de contenido correcto
+    if (response.ok) {
+        return response.json();  // Si la respuesta es válida, parseamos como JSON
+    } else {
+        throw new Error('Error en la solicitud');
+    }
+})
+.then(data => {
+    if (data.success) {
+        console.log('Cantidad del producto actualizada correctamente');
+    } else {
+        console.log('Error al actualizar la cantidad:', data.message);
+    }
+})
+.catch(error => {
+    console.error('Error al realizar la solicitud:', error);
+});
 }
 
 function agregarAlCarrito(infoElemento) {
@@ -112,41 +95,9 @@ function actualizarCarritoHTML() {
 
         // Agregar evento de clic al botón de eliminar
         botonEliminar.addEventListener('click', () => {
-            // Llamamos a la función que elimina el artículo del carrito
             eliminarItemCarrito(item.id);
-        
-            // Realizar la solicitud para actualizar la cantidad en la base de datos
-            fetch('/seller/controllers/actualizar_producto.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    id: item.id,  // Enviamos el ID del producto
-                    cantidad: item.cantidad  // Enviamos la cantidad que se va a devolver a la base de datos
-                })
-            })
-            .then(response => {
-                // Verifica si la respuesta es correcta
-                if (response.ok) {
-                    return response.json();  // Parseamos la respuesta como JSON
-                } else {
-                    throw new Error('Error en la solicitud');
-                }
-            })
-            .then(data => {
-                // Aquí se puede agregar lógica adicional si la solicitud fue exitosa
-                if (data.success) {
-                    console.log(`Cantidad de ${item.titulo} actualizada en la base de datos.`);
-                } else {
-                    console.error('Error al actualizar la base de datos:', data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Error al realizar la solicitud:', error);
-            });
         });
-// codigo nuevo
+
         // Agregar cada celda a la fila
         row.appendChild(imagenCell);
         row.appendChild(nombreCell);

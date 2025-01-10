@@ -1,4 +1,6 @@
 <?php
+
+
 require_once "models/users/producto.php";
     class menu{
         public function __construct(){}

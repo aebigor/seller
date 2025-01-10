@@ -1,7 +1,6 @@
 <?php
 // Habilitar la visualización de errores
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+include_once 'db.php';
 
 // Configurar encabezados para aceptar solicitudes JSON
 header('Content-Type: application/json');
@@ -27,14 +26,6 @@ if (isset($data['id']) && isset($data['cantidad'])) {
     $id = $data['id'];
     $cantidad = $data['cantidad'];
 
-    // Configuración de la conexión a la base de datos
-    $servername = "localhost";
-    $username = "root";
-    $password = "S3rv1t3l4dm1n//";
-    $dbname = "pentland";
-
-    // Crear conexión
-    $conn = new mysqli($servername, $username, $password, $dbname);
 
     // Verificar conexión
     if ($conn->connect_error) {

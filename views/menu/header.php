@@ -54,8 +54,7 @@
                                 <tbody></tbody>
                             </table>
                             <a href="#" id="vaciar-carrito" class="btn-3">vaciar carrito</a>
-                            
-
+                            <a href="#" id="procesar-pago" class="btn-3">Pagar</a>
                         </div>
                         <div id="total-carrito">$0.00</div>
                     </li>

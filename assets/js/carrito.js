@@ -23,6 +23,38 @@ function comprarElemento(elemento) {
         cantidad: 1
     };
     agregarAlCarrito(infoElemento);
+
+    // Realizamos la llamada al backend para actualizar la cantidad del producto en la base de datos
+    fetch('/seller/controllers/actualizar_producto.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            id: infoElemento.id,
+            cantidad: -1 // Restamos una unidad
+        })
+    })
+    .then(response => {
+        // Verifica si la respuesta es correcta
+        console.log('Respuesta del servidor:', response);
+        // Asegúrate de que la respuesta tenga el tipo de contenido correcto
+        if (response.ok) {
+            return response.json();  // Si la respuesta es válida, parseamos como JSON
+        } else {
+            throw new Error('Error en la solicitud');
+        }
+    })
+    .then(data => {
+        if (data.success) {
+            console.log('Cantidad del producto actualizada correctamente');
+        } else {
+            console.log('Error al actualizar la cantidad:', data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error al realizar la solicitud:', error);
+    });
 }
 
 function agregarAlCarrito(infoElemento) {
@@ -79,7 +111,6 @@ function actualizarCarritoHTML() {
     calcularTotal();
 }
 
-
 function calcularTotal() {
     let total = 0;
     itemsCarrito.forEach(item => {
@@ -99,3 +130,4 @@ function eliminarItemCarrito(id) {
     itemsCarrito = itemsCarrito.filter(item => item.id !== id);
     actualizarCarritoHTML();
 }
+

@@ -44,7 +44,8 @@
                                 </thead>
                                 <tbody></tbody>
                             </table>
-                            <a href="#" id="vaciar-carrito" class="btn-3">vaciar carrito</a>                      
+                            <a href="#" id="vaciar-carrito" class="btn-3">vaciar carrito</a>       
+                        
                         </div>
                         <div id="total-carrito">$0.00</div>
                     </li>

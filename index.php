@@ -1,8 +1,16 @@
 <?php
 
+    /* para pruebas 
+    require_once "models/DataBase.php";
+    $conn = DataBase::connection();
+
+    require_once "controllers/Dashboard.php";
+    $controller = new Dashboard;
+    $controller -> main();
+    */ 
+
     ob_start();
 
-    
     require_once "models/Database.php";
 
     if(!isset($_REQUEST['c'])){
@@ -12,7 +20,7 @@
         $controller = new Landing;
 
         $controller -> main();
-
+ 
     } else {
 
         $controller = $_REQUEST['c'];
@@ -29,4 +37,5 @@
 
     ob_end_flush();
 
+    
 ?>

@@ -14,7 +14,7 @@ if (isset($_SESSION['sesion_status']) && $_SESSION['sesion_status'] === 'ok') {
 } else {
     // Si no existe sesión activa, no hacer nada (no imprimir nada)
     // O podrías redirigir al login si lo prefieres
-    echo "<p>No estás logueado. Por favor, <a href='?c=Roles&a=validar'>inicia sesión</a></p>";
+    echo "<p>No estás logueado. Por favor, <a href='?c=Login&a=main'>inicia sesión</a></p>";
 }
 ?>
 
@@ -466,7 +466,7 @@ if (isset($_SESSION['sesion_status']) && $_SESSION['sesion_status'] === 'ok') {
         <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link active btn-bd-primary-v2 border text-white rounded-3" aria-current="page"
-               href="<?= isset($_SESSION['sesion_status']) && $_SESSION['sesion_status'] === 'ok' ? '?c=MenuA&a=log_out' : '?c=Roles&a=validate' ?>">
+               href="<?= isset($_SESSION['sesion_status']) && $_SESSION['sesion_status'] === 'ok' ? '?c=MenuA&a=log_out' : '?c=Login&a=main' ?>">
                <?= isset($_SESSION['sesion_status']) && $_SESSION['sesion_status'] === 'ok' ? 'Cerrar sesión' : 'Registrarse / Iniciar Sesion' ?>
             </a>
 
@@ -516,177 +516,135 @@ if (isset($_SESSION['sesion_status']) && $_SESSION['sesion_status'] === 'ok') {
       <br>
       <h1 class="text-center">Celulares</h1>
       <br>
-      <section>
-        <div class="container">
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-5">
-            <div class="col">
-              <div class="card h-100" style="max-width: 250px; margin: 0 auto;">
-                <img src="assets/imagenes/Celulares/iPhone 16 Pro Max 256GB 5G/1sf.png"
-                  class="card-img-top img-fluid rounded-5" alt="..."
-                  style="max-height: 200px; width: 200px; object-fit: contain; margin: 0 auto; border-radius: 15px;">
-                <div class="card-body" style="padding: 0.75rem;">
-                  <h5 class="card-title text-center" style="font-size: 1rem;">Iphone 16 pro max</h5>
-                  <p class="card-text" style="font-size: 0.875rem;"></p>
-                </div>
-              </div>
-            </div>
-            <!-- Repite el mismo cambio para las demás imágenes -->
-            <div class="col">
-              <div class="card h-100" style="max-width: 250px; margin: 0 auto;">
-                <img src="assets/imagenes/Celulares/iPhone 16 Pro Max 256GB 5G/1sf.png" class="card-img-top img-fluid"
-                  alt="..."
-                  style="max-height: 200px; width: 200px; object-fit: contain; margin: 0 auto; border-radius: 15px;">
-                <div class="card-body" style="padding: 0.75rem;">
-                  <h5 class="card-title text-center" style="font-size: 1rem;">Iphone 16 pro max</h5>
-                  <p class="card-text" style="font-size: 0.875rem;"></p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card h-100" style="max-width: 250px; margin: 0 auto;">
-                <img src="assets/imagenes/Celulares/iPhone 16 Pro Max 256GB 5G/1sf.png" class="card-img-top img-fluid"
-                  alt="..."
-                  style="max-height: 200px; width: 200px; object-fit: contain; margin: 0 auto; border-radius: 15px;">
-                <div class="card-body" style="padding: 0.75rem;">
-                  <h5 class="card-title text-center" style="font-size: 1rem;">Iphone 16 pro max</h5>
-                  <p class="card-text" style="font-size: 0.875rem;"></p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card h-100" style="max-width: 250px; margin: 0 auto;">
-                <img src="assets/imagenes/Celulares/iPhone 16 Pro Max 256GB 5G/1sf.png" class="card-img-top img-fluid"
-                  alt="..."
-                  style="max-height: 200px; width: 200px; object-fit: contain; margin: 0 auto; border-radius: 15px;">
-                <div class="card-body" style="padding: 0.75rem;">
-                  <h5 class="card-title text-center" style="font-size: 1rem;">Iphone 16 pro max</h5>
-                  <p class="card-text" style="font-size: 0.875rem;"></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+
+<section>
+  <br>
+  <h4 id="scrollspyHeading3"></h4>
+  <section>
+    <div class="container">
+      <div class="row g-5 justify-content-center">
+        <?php
+        if (isset($category1_products) && !empty($category1_products)) {
+            $product_count = count($category1_products); // Contamos los productos para saber cuántos hay
+
+            // Determinamos cuántas columnas debe tener la fila
+            foreach ($category1_products as $producto) {
+                echo '
+                <div class="col-12 col-sm-6 col-md-' . (12 / min($product_count, 4)) . '"> <!-- Ajusta el tamaño de columna basado en la cantidad -->
+                  <div class="card h-100" style="max-width: 250px; margin: 0 auto;">
+                    <img src="' . $producto->get_image() . '" class="card-img-top img-fluid rounded-5" alt="..."
+                         style="max-height: 200px; width: 200px; object-fit: contain; margin: 0 auto; border-radius: 15px;">
+                    <div class="card-body" style="padding: 0.75rem;">
+                      <h5 class="card-title text-center" style="font-size: 1rem;">' . $producto->get_name() . '</h5>
+                      <p class="card-text text-center" style="font-size: 0.875rem;">' . $producto->get_description() . '</p>
+                      <p class="card-text text-center" style="font-size: 1rem; font-weight: bold;">$' . $producto->get_price() . '</p>
+                      <p class="card-text text-center" style="font-size: 0.875rem;">Disponible: ' . $producto->get_amount() . ' unidades</p>
+                      <div class="d-grid gap-2">
+                        <button class="btn btn-primary" type="button" onclick="agregarAlCarrito(' . $producto->get_id() . ')">Agregar al carrito</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>';
+            }
+        } else {
+            echo '<p>No hay productos disponibles en esta categoría.</p>';
+        }
+        ?>
+      </div>
+    </div>
+  </section>
+</section>
+
+
+
+
       <br>
       <h4 id="scrollspyHeading2"></h4>
       <br>
       <h1 class="text-center">Computadores</h1>
       <br>
-      <section>
-        <div class="container">
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-5">
-            <div class="col">
-              <div class="card h-100" style="max-width: 250px; margin: 0 auto;">
-                <img src="assets/imagenes/Computadores/Portátil Lenovo V14 G5 Ci3 256GB SSD + Maleta/2sf.png"
-                  class="card-img-top img-fluid rounded-5" alt="..."
-                  style="max-height: 200px; width: 200px; object-fit: contain; margin: 0 auto; border-radius: 15px;">
-                <div class="card-body" style="padding: 0.75rem;">
-                  <h5 class="card-title text-center" style="font-size: 1rem;">Portátil Lenovo V14 G5 Ci3 256GB SSD +
-                    Maleta</h5>
-                  <p class="card-text" style="font-size: 0.875rem;"></p>
-                </div>
-              </div>
-            </div>
-            <!-- Repite el mismo cambio para las demás imágenes -->
-            <div class="col">
-              <div class="card h-100" style="max-width: 250px; margin: 0 auto;">
-                <img src="assets/imagenes/Computadores/Portátil Lenovo V14 G5 Ci3 256GB SSD + Maleta/2sf.png"
-                  class="card-img-top img-fluid" alt="..."
-                  style="max-height: 200px; width: 200px; object-fit: contain; margin: 0 auto; border-radius: 15px;">
-                <div class="card-body" style="padding: 0.75rem;">
-                  <h5 class="card-title text-center" style="font-size: 1rem;">Portátil Lenovo V14 G5 Ci3 256GB SSD +
-                    Maleta</h5>
-                  <p class="card-text" style="font-size: 0.875rem;"></p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card h-100" style="max-width: 250px; margin: 0 auto;">
-                <img src="assets/imagenes/Computadores/Portátil Lenovo V14 G5 Ci3 256GB SSD + Maleta/2sf.png"
-                  class="card-img-top img-fluid" alt="..."
-                  style="max-height: 200px; width: 200px; object-fit: contain; margin: 0 auto; border-radius: 15px;">
-                <div class="card-body" style="padding: 0.75rem;">
-                  <h5 class="card-title text-center" style="font-size: 1rem;">Portátil Lenovo V14 G5 Ci3 256GB SSD +
-                    Maleta</h5>
-                  <p class="card-text" style="font-size: 0.875rem;"></p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card h-100" style="max-width: 250px; margin: 0 auto;">
-                <img src="assets/imagenes/Computadores/Portátil Lenovo V14 G5 Ci3 256GB SSD + Maleta/2sf.png"
-                  class="card-img-top img-fluid" alt="..."
-                  style="max-height: 200px; width: 200px; object-fit: contain; margin: 0 auto; border-radius: 15px;">
-                <div class="card-body" style="padding: 0.75rem;">
-                  <h5 class="card-title text-center" style="font-size: 1rem;">Portátil Lenovo V14 G5 Ci3 256GB SSD +
-                    Maleta</h5>
-                  <p class="card-text" style="font-size: 0.875rem;"></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <br>
-      <h4 id="scrollspyHeading3"></h4>
-      <br>
-      <h1 class="text-center">Equipos usados</h1>
-      <br>
-      <section>
-        <div class="container">
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-5">
-            <div class="col">
-              <div class="card h-100" style="max-width: 250px; margin: 0 auto;">
-                <img src="assets/imagenes/televisores/TV Panasonic 50 Led 4K FHD Smart TV Android 50MX700/1sf.png"
-                  class="card-img-top img-fluid rounded-5" alt="..."
-                  style="max-height: 200px; width: 200px; object-fit: contain; margin: 0 auto; border-radius: 15px;">
-                <div class="card-body" style="padding: 0.75rem;">
-                  <h5 class="card-title text-center" style="font-size: 1rem;">TV Samsung 50 Crystal 4K UHD UN50DU8200
-                  </h5>
-                  <p class="card-text" style="font-size: 0.875rem;"></p>
-                </div>
-              </div>
-            </div>
-            <!-- Repite el mismo cambio para las demás imágenes -->
-            <div class="col">
-              <div class="card h-100" style="max-width: 250px; margin: 0 auto;">
-                <img src="assets/imagenes/televisores/TV Panasonic 50 Led 4K FHD Smart TV Android 50MX700/1sf.png"
-                  class="card-img-top img-fluid" alt="..."
-                  style="max-height: 200px; width: 200px; object-fit: contain; margin: 0 auto; border-radius: 15px;">
-                <div class="card-body" style="padding: 0.75rem;">
-                  <h5 class="card-title text-center" style="font-size: 1rem;">TV Samsung 50 Crystal 4K UHD UN50DU8200
-                  </h5>
-                  <p class="card-text" style="font-size: 0.875rem;"></p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card h-100" style="max-width: 250px; margin: 0 auto;">
-                <img src="assets/imagenes/televisores/TV Panasonic 50 Led 4K FHD Smart TV Android 50MX700/1sf.png"
-                  class="card-img-top img-fluid" alt="..."
-                  style="max-height: 200px; width: 200px; object-fit: contain; margin: 0 auto; border-radius: 15px;">
-                <div class="card-body" style="padding: 0.75rem;">
-                  <h5 class="card-title text-center" style="font-size: 1rem;">TV Samsung 50 Crystal 4K UHD UN50DU8200
-                  </h5>
-                  <p class="card-text" style="font-size: 0.875rem;"></p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card h-100" style="max-width: 250px; margin: 0 auto;">
-                <img src="assets/imagenes/televisores/TV Panasonic 50 Led 4K FHD Smart TV Android 50MX700/1sf.png"
-                  class="card-img-top img-fluid" alt="..."
-                  style="max-height: 200px; width: 200px; object-fit: contain; margin: 0 auto; border-radius: 15px;">
-                <div class="card-body" style="padding: 0.75rem;">
-                  <h5 class="card-title text-center" style="font-size: 1rem;">TV Samsung 50 Crystal 4K UHD UN50DU8200
-                  </h5>
-                  <p class="card-text" style="font-size: 0.875rem;"></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+
+<section>
+  <br>
+  <h4 id="scrollspyHeading3"></h4>
+  <section>
+    <div class="container">
+      <div class="row g-5 justify-content-center">
+        <?php
+        if (isset($category2_products) && !empty($category2_products)) {
+            $product_count = count($category2_products); // Contamos los productos para saber cuántos hay
+
+            // Determinamos cuántas columnas debe tener la fila
+            foreach ($category2_products as $producto) {
+                echo '
+                <div class="col-12 col-sm-6 col-md-' . (12 / min($product_count, 4)) . '"> <!-- Ajusta el tamaño de columna basado en la cantidad -->
+                  <div class="card h-100" style="max-width: 250px; margin: 0 auto;">
+                    <img src="' . $producto->get_image() . '" class="card-img-top img-fluid rounded-5" alt="..."
+                         style="max-height: 200px; width: 200px; object-fit: contain; margin: 0 auto; border-radius: 15px;">
+                    <div class="card-body" style="padding: 0.75rem;">
+                      <h5 class="card-title text-center" style="font-size: 1rem;">' . $producto->get_name() . '</h5>
+                      <p class="card-text text-center" style="font-size: 0.875rem;">' . $producto->get_description() . '</p>
+                      <p class="card-text text-center" style="font-size: 1rem; font-weight: bold;">$' . $producto->get_price() . '</p>
+                      <p class="card-text text-center" style="font-size: 0.875rem;">Disponible: ' . $producto->get_amount() . ' unidades</p>
+                      <div class="d-grid gap-2">
+                        <button class="btn btn-primary" type="button" onclick="agregarAlCarrito(' . $producto->get_id() . ')">Agregar al carrito</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>';
+            }
+        } else {
+            echo '<p>No hay productos disponibles en esta categoría.</p>';
+        }
+        ?>
+      </div>
+    </div>
+  </section>
+</section>
+
+
+  <br>
+  <h4 id="scrollspyHeading3"></h4>
+  <br>
+  <h1 class="text-center">Equipos Usados</h1>
+  <br>
+  <section>
+    <div class="container">
+      <div class="row g-5 justify-content-center">
+        <?php
+        if (isset($category3_products) && !empty($category3_products)) {
+            $product_count = count($category3_products); // Contamos los productos para saber cuántos hay
+
+            // Determinamos cuántas columnas debe tener la fila
+            foreach ($category3_products as $producto) {
+                echo '
+                <div class="col-12 col-sm-6 col-md-' . (12 / min($product_count, 4)) . '"> <!-- Ajusta el tamaño de columna basado en la cantidad -->
+                  <div class="card h-100" style="max-width: 250px; margin: 0 auto;">
+                    <img src="' . $producto->get_image() . '" class="card-img-top img-fluid rounded-5" alt="..."
+                         style="max-height: 200px; width: 200px; object-fit: contain; margin: 0 auto; border-radius: 15px;">
+                    <div class="card-body" style="padding: 0.75rem;">
+                      <h5 class="card-title text-center" style="font-size: 1rem;">' . $producto->get_name() . '</h5>
+                      <p class="card-text text-center" style="font-size: 0.875rem;">' . $producto->get_description() . '</p>
+                      <p class="card-text text-center" style="font-size: 1rem; font-weight: bold;">$' . $producto->get_price() . '</p>
+                      <p class="card-text text-center" style="font-size: 0.875rem;">Disponible: ' . $producto->get_amount() . ' unidades</p>
+                      <div class="d-grid gap-2">
+                        <button class="btn btn-primary" type="button" onclick="agregarAlCarrito(' . $producto->get_id() . ')">Agregar al carrito</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>';
+            }
+        } else {
+            echo '<p>No hay productos disponibles en esta categoría.</p>';
+        }
+        ?>
+      </div>
+    </div>
+  </section>
+</section>
+
+
+
       <br>
       <h4 id="scrollspyHeading4"></h4>
       <br>

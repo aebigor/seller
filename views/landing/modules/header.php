@@ -3,8 +3,8 @@
 <head>
 <title>menu-p</title>
 <meta charset="UTF-8">
-<link rel ="stylesheet" href="asset/css/registro.css" type="text/css">
-<link rel ="stylesheet" href="asset/css/categoria.css" type="text/css">
+<link rel ="stylesheet" href="assets/css/registro.css" type="text/css">
+<link rel ="stylesheet" href="assets/css/categoria.css" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
@@ -21,7 +21,7 @@
                     <li><a href="#">servicios</a></li>
                     <li><a href="#">categoria</a></li>
                     <li><a href="#">contacto</a></li>
-                    <li><a href="?c=Roles&a=validar" >inicio sesion</a></li>
+                    <li><a href="?c=Roles&a=validate" >inicio sesion</a></li>
                     <li><a href="?c=Roles&a=mostrarFormularioRol" >registrar</a></li>
                     
                 </ul>

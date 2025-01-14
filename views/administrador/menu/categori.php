@@ -19,11 +19,11 @@
             Categoría: 
             <select name="categoria" id="categoryInput">
                 <option value="">Seleccione una categoría</option>
-                <option value="Alimentos">Alimentos</option>
-                <option value="Snacks">Snacks</option>
-                <option value="Farmapet">Farmapet</option>
-                <option value="juguetes">juguetes</option>
-                <option value="accesorios">accesorios</option>
+                <option value="Computadormesa">Computador mesa</option>
+                <option value="Portatil">Portatil</option>
+                <option value="Celulares">Celulares</option>
+                <option value="Diademas">Diademas</option>
+                <option value="Perifericos">Perifericos</option>
                 <!-- Agrega más categorías aquí según necesites -->
             </select>
 

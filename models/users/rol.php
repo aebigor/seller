@@ -198,42 +198,59 @@
             }
         }
 
+        public function validarRol($correo, $passCorreo) {
+            try {
+                // Verificar si la conexión a la base de datos está establecida
+                if ($this->dbh) {
+                    // Preparar la consulta SQL para buscar el usuario por correo electrónico y contraseña cifrada
+                    $sql = 'SELECT * FROM user WHERE email = :correo';
 
-public function validarRol($correo, $passCorreo) {
-    try {
-        // Verificar si la conexión a la base de datos está establecida
-        if ($this->dbh) {
-            // Preparar la consulta SQL para buscar el usuario por correo electrónico y contraseña cifrada
-            $sql = 'SELECT * FROM user WHERE email = :correo';
+                    if ($stmt = $this->dbh->prepare($sql)) {
+                        // Vincular parámetros
+                        $stmt->bindParam(':correo', $correo);
 
-            if ($stmt = $this->dbh->prepare($sql)) {
-                // Vincular parámetros
-                $stmt->bindParam(':correo', $correo);
+                        // Ejecutar la consulta
+                        $stmt->execute();
 
-                // Ejecutar la consulta
-                $stmt->execute();
+                        // Obtener el resultado
+                        $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+<<<<<<< HEAD
 
-                // Obtener el resultado
-                $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
-
-                if ($usuario && password_verify($passCorreo, $usuario['pass'])) {
-                    // Si la contraseña es válida, retornamos todos los datos del usuario
-                    return $usuario; // Devolvemos el array completo con todos los datos
-                } else {
-                    // Si no se valida la contraseña, retornamos false
-                    return false;
+                        if ($usuario && password_verify($passCorreo, $usuario['pass'])) {
+                            // Si la contraseña es válida, retornamos todos los datos del usuario
+                            return $usuario; // Devolvemos el array completo con todos los datos
+                        } else {
+                            // Si no se valida la contraseña, retornamos false
+                            return false;
+                        }
+                    }
+=======
+        
+                        if ($usuario && password_verify($passCorreo, $usuario['passCorreo'])) {
+                            // Contraseña válida, redirecciona según el rol
+                            if($usuario['rol'] === 'Vendedor') {
+                                header("Location: ?c=MenuV");
+                                exit();
+                            } else if ($usuario['rol'] === 'Usuario'){
+                                header("Location: ?c=MenuU");
+                                exit();
+                            } else if ($usuario['rol'] === 'Admin'){
+                                header("Location: ?c=menuA");
+                                exit();
+                            }  else {
+                                header("Location: ?c=Menu");
+                                exit();
+                            }
+                        }   
+                    } 
+>>>>>>> 63330db648b288c321d09f5a14b56ed178fa1f39
                 }
+            } catch (PDOException $e) {
+                // Captura y maneja los errores de PDO
+                die("Error en la consulta: " . $e->getMessage());
             }
+            return false; // Si no se encuentra el usuario o algo falla
         }
-    } catch (PDOException $e) {
-        // Captura y maneja los errores de PDO
-        die("Error en la consulta: " . $e->getMessage());
-    }
-    return false; // Si no se encuentra el usuario o algo falla
-}
-
-
-
     
         public function createProductos($imagenNombre) {
             try {

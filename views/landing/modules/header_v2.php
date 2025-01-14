@@ -14,7 +14,7 @@ if (isset($_SESSION['sesion_status']) && $_SESSION['sesion_status'] === 'ok') {
 } else {
     // Si no existe sesión activa, no hacer nada (no imprimir nada)
     // O podrías redirigir al login si lo prefieres
-    echo "<p>No estás logueado. Por favor, <a href='?c=Roles&a=validar'>inicia sesión</a></p>";
+    echo "<p>No estás logueado. Por favor, <a href='?c=Roles&a=validate'>inicia sesión</a></p>";
 }
 ?>
 

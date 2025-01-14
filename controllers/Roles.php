@@ -78,7 +78,7 @@ require_once "models/users/user.php";
                     // Intentar crear el rol en la base de datos
                     try {
                         $rol->createRol();
-                         header("Location: ?c=Roles&a=validar");
+                         header("Location: ?c=Roles&a=validate");
                     } catch (Exception $e) {
                         echo "Error al crear el rol: " . $e->getMessage();
                     }
@@ -113,7 +113,7 @@ require_once "models/users/user.php";
                     // Intentar crear el rol en la base de datos
                     try {
                         $rol->createRol();
-                         header("Location: ?c=Roles&a=validar");
+                         header("Location: ?c=Roles&a=validate");
                     } catch (Exception $e) {
                         echo "Error al crear el rol: " . $e->getMessage();
                     }
@@ -207,7 +207,7 @@ require_once "models/users/user.php";
             // Intentar crear el rol en la base de datos
             try {
                 $rol->createRol();
-                 header("Location: ?c=Roles&a=validar");
+                 header("Location: ?c=Roles&a=validate");
             } catch (Exception $e) {
                 echo "Error al crear el rol: " . $e->getMessage();
             }
@@ -241,7 +241,7 @@ require_once "models/users/user.php";
         // Intentar crear el rol en la base de datos
         try {
             $rol->createRol();
-             header("Location: ?c=Roles&a=validar");
+             header("Location: ?c=Roles&a=validate");
         } catch (Exception $e) {
             echo "Error al crear el rol: " . $e->getMessage();
         }
@@ -294,7 +294,7 @@ require_once "models/users/user.php";
                             // Llamar a createProductos y pasar la imagen como argumento
                             $rol->createProductos($imagenNombre);
                             echo '<p>Producto creado con éxito.</p>';
-                            header("Location: ?c=menuV"); // Redirigir al controlador deseado
+                            header("Location: ?c=MenuV"); // Redirigir al controlador deseado
                         } catch (Exception $e) {
                             $errors['db'] = "Error al crear el producto: " . $e->getMessage();
                         }

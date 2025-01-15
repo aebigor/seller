@@ -4,6 +4,7 @@ class Landing
 {
 
 
+
 public function main()
 {
     require_once "models/Product.php";        
@@ -19,7 +20,7 @@ public function main()
 
     // Función para agregar productos aleatorios a la lista de imágenes
     function add_random_images($category_products, &$images, $num_images_to_add) {
-        if (count($category_products) > 0) {
+        if (count($category_products) > 0 && $num_images_to_add > 0) {
             // Seleccionar aleatoriamente productos de esta categoría
             $random_products = array_rand($category_products, min($num_images_to_add, count($category_products)));
             if (is_array($random_products)) {
@@ -32,32 +33,32 @@ public function main()
         }
     }
 
-    // Primero tratamos de llenar las imágenes desde las tres categorías
-    add_random_images($category1_products, $images, 6);
-    add_random_images($category2_products, $images, 6 - count($images)); // Completar hasta 6
-    add_random_images($category3_products, $images, 6 - count($images)); // Completar hasta 6
+    // Prioridad: Mostrar al menos 2 productos por categoría si están disponibles
+    add_random_images($category1_products, $images, 2); // Intentar con 2 de la categoría 1
+    add_random_images($category2_products, $images, 2); // Intentar con 2 de la categoría 2
+    add_random_images($category3_products, $images, 2); // Intentar con 2 de la categoría 3
 
-    // Si todavía no tenemos 6 imágenes, usamos más de una categoría
+    // Si no tenemos 6 imágenes, completar con productos de las categorías restantes
     if (count($images) < 6) {
-        // En este punto, hay menos de 6 imágenes, y tenemos que llenar el espacio
-        // Intentamos completar con los productos de las categorías que tienen productos disponibles
+        // Calcular cuántas imágenes faltan
         $remaining_needed = 6 - count($images);
 
-        // Si hay más productos en alguna de las categorías, los añadimos
-        if (count($category1_products) > 0) {
-            add_random_images($category1_products, $images, $remaining_needed);
-        } elseif (count($category2_products) > 0) {
-            add_random_images($category2_products, $images, $remaining_needed);
-        } elseif (count($category3_products) > 0) {
-            add_random_images($category3_products, $images, $remaining_needed);
-        }
+        // Intentamos completar con productos de las categorías restantes
+        add_random_images($category1_products, $images, $remaining_needed);
+        add_random_images($category2_products, $images, $remaining_needed);
+        add_random_images($category3_products, $images, $remaining_needed);
     }
 
-    // Ahora tenemos las 6 imágenes (o menos si no hay suficientes productos)
-    // Pasamos estas imágenes a la vista
-    $random_images = array_slice($images, 0, 6);  // Aseguramos que haya exactamente 6
+    // Asegurarse de que no haya más de 6 imágenes
+    $random_images = array_slice($images, 0, 6);
 
-        /*
+    require_once "views/landing/modules/header_v2.php";
+}
+
+
+
+
+            /*
         require_once "views/landing/modules/1_header.php";
         require_once "views/landing/modules/2_nav_sup.php";
         require_once "views/landing/modules/3_section_carousell.php";
@@ -69,12 +70,6 @@ public function main()
         require_once "views/landing/modules/9_importante.php";
         require_once "views/landing/modules/10_footer.php";
         */
-
-
-    require_once "views/landing/modules/header_v2.php";
-}
-
-
 
 
 

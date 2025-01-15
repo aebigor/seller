@@ -228,7 +228,7 @@
         </div>
         <button class="btn btn-primary w-100" type="submit">Registrar</button>
         <p class="mt-3 mb-3">
-          ¿Ya tengo cuenta? <a href="?c=Roles&a=validar">Iniciar Sesión</a>
+          ¿Ya tengo cuenta? <a href="?c=login">Iniciar Sesión</a>
         </p>
       </form>
     </div>

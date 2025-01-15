@@ -473,12 +473,13 @@ if (isset($_SESSION['sesion_status']) && $_SESSION['sesion_status'] === 'ok') {
           </li>
         </ul>
         <!-- Alineación del carrito a la derecha -->
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item d-flex align-items-center">
-            <img id="img-carrito" src="img/car.svg" alt="car" style="width: 36px; height: auto;">
-            <div id="total-carrito" class="ms-2">$0.00</div>
-          </li>
-        </ul>
+<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+  <li class="nav-item d-flex align-items-center">
+    <i class="fa-solid fa-cart-shopping fs-3 text-primary"></i> <!-- fs-3 aumenta el tamaño, text-danger cambia el color -->
+    <div id="total-carrito" class="ms-2 fs-5">$0.00</div> <!-- fs-5 cambia el tamaño del texto -->
+  </li>
+</ul>
+
       </div>
     </div>
   </nav>

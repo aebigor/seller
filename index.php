@@ -1,9 +1,22 @@
 <?php
 
+    /* para pruebas 
+    require_once "models/DataBase.php";
+    $conn = DataBase::connection();
+
+    require_once "controllers/Dashboard.php";
+    $controller = new Dashboard;
+    $controller -> main();
+    */ 
+
     ob_start();
 
+<<<<<<< HEAD
     
     require_once "models/DataBase.php";
+=======
+    require_once "models/Database.php";
+>>>>>>> rama_local_jose
 
     if(!isset($_REQUEST['c'])){
 
@@ -12,7 +25,7 @@
         $controller = new Landing;
 
         $controller -> main();
-
+ 
     } else {
 
         $controller = $_REQUEST['c'];
@@ -29,4 +42,5 @@
 
     ob_end_flush();
 
+    
 ?>

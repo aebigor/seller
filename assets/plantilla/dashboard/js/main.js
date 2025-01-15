@@ -47,9 +47,9 @@ $(document).ready(function(){
 				window.location="?c=menuA&a=log_out";
 			}
 		});
-	});
-    
+	});    
 });
+
 (function($){
     $(window).on("load",function(){
         $(".nav-lateral-content").mCustomScrollbar({

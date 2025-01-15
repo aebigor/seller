@@ -10,13 +10,8 @@
     */ 
 
     ob_start();
-
-<<<<<<< HEAD
     
     require_once "models/DataBase.php";
-=======
-    require_once "models/Database.php";
->>>>>>> rama_local_jose
 
     if(!isset($_REQUEST['c'])){
 

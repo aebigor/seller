@@ -81,51 +81,55 @@ class Products
 
 
     
+
     public function update_product()
-    {
-        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            
-            $product = new Product();
-            $product = $product->get_product_by_id($_GET['id']);
-            
-            
-            require_once "views/dashboard/modules/1_header.php";
-            require_once "views/dashboard/modules/2_nav_lat.php";
-            require_once "views/dashboard/modules/3_nav_sup.php";
-            require_once "views/dashboard/pages/update_product.php";
-            require_once "views/dashboard/modules/footer.php";
-        }
-
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            
-            $product = new Product(
-                $_POST['product_id'],
-                $_POST['product_name'],
-                $_POST['product_description'],
-                $_POST['product_technical_description'],
-                $_POST['product_price'],
-                $_POST['product_amount'],
-                $_POST['product_category'],
-                $_POST['existing_image'] 
-            );
-
-            
-            if ($_FILES['product_image']['name']) {
-                
-                $image_path = $this->handle_image_upload();
-                $product->set_image($image_path);  
-            } else {
-                
-                $product->set_image($_POST['existing_image']);
-            }
-
-            
-            $product->update_product();
-
-            
-            header("Location: ?c=Products&a=read_products");
-        }
+{
+    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+        
+        $product = new Product();
+        $product = $product->get_product_by_id($_GET['id']);
+        
+        require_once "views/dashboard/modules/1_header.php";
+        require_once "views/dashboard/modules/2_nav_lat.php";
+        require_once "views/dashboard/modules/3_nav_sup.php";
+        require_once "views/dashboard/pages/update_product.php";
+        require_once "views/dashboard/modules/footer.php";
     }
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        
+        // Crear el objeto producto con los datos del formulario
+        $product = new Product(
+            $_POST['product_id'],
+            $_POST['product_name'],
+            $_POST['product_description'],
+            $_POST['product_technical_description'],
+            $_POST['product_price'],
+            $_POST['product_amount'],
+            $_POST['product_category'],
+            $_POST['existing_image'] // Usar la imagen existente como valor predeterminado
+        );
+
+        // Comprobar si se sube una nueva imagen
+        if ($_FILES['product_image']['name']) {
+            // Si hay una nueva imagen, procesarla
+            $image_path = $this->handle_image_upload();
+            if ($image_path) {
+                $product->set_image($image_path);  
+            }
+        } else {
+            // Si no se sube una nueva imagen, mantener la imagen existente
+            $product->set_image($_POST['existing_image']);
+        }
+
+        // Actualizar el producto
+        $product->update_product();
+
+        // Redirigir a la lista de productos
+        header("Location: ?c=Products&a=read_products");
+    }
+}
+
 
 
 

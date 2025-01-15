@@ -28,10 +28,11 @@
         <div class="row">
           <!-- Campo Nombre -->
           <div class="col-12 col-md-6">
-            <div class="form-group">
-              <label for="producto_nombre" class="bmd-label-floating">Nombre del Producto</label>
-              <input name="product_name" type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 ]{1,100}" class="form-control" id="producto_nombre" maxlength="100" required>
-            </div>
+<div class="form-group">
+  <label for="producto_nombre" class="bmd-label-floating">Nombre del Producto</label>
+  <input name="product_name" type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 +]{1,100}" class="form-control" id="producto_nombre" maxlength="100" required>
+</div>
+
 
           </div>
           

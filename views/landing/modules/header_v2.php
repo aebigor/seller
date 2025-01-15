@@ -487,18 +487,19 @@ if (isset($_SESSION['sesion_status']) && $_SESSION['sesion_status'] === 'ok') {
     <div class="row flex-lg-row-reverse align-items-center g-5">
       <div class="col-10 col-sm-8 col-lg-6 py-5">
 
-        <div id="drag-container">
-          <div id="spin-container">
-            <!--img del carrusel -->
-            <img src="assets/imagenes/Celulares/iPhone 16 Pro Max 256GB 5G/1sf.png" alt="">
-            <img src="assets/imagenes/Computadores/Portátil Lenovo V14 G5 Ci3 256GB SSD + Maleta/2sf.png" alt="">
-            <img src="assets/imagenes/televisores/TV Panasonic 50 Led 4K FHD Smart TV Android 50MX700/1sf.png" alt="">
-            <img src="assets/imagenes/Celulares/iPhone 16 Pro Max 256GB 5G/1sf.png" alt="">
-            <img src="assets/imagenes/Computadores/Portátil Lenovo V14 G5 Ci3 256GB SSD + Maleta/2sf.png" alt="">
-            <img src="assets/imagenes/televisores/TV Panasonic 50 Led 4K FHD Smart TV Android 50MX700/1sf.png" alt="">
-          </div>
-          <div id="ground"></div>
-        </div>
+<div id="drag-container">
+    <div id="spin-container">
+        <?php
+        // Mostrar las imágenes aleatorias (hasta 6)
+        foreach ($random_images as $image_url) {
+            echo '<img src="' . $image_url . '" alt="Imagen del Producto">';
+        }
+        ?>
+    </div>
+    <div id="ground"></div>
+</div>
+
+
 
       </div>
       <div class="col-lg-6">

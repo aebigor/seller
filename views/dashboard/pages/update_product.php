@@ -83,6 +83,7 @@
           <div class="col-12 col-md-6">
             <div class="form-group">
               <label for="producto_imagen" class="bmd-label-floating">Imagen del Producto</label>
+              <input type="hidden" name="existing_image" value="<?php echo $product->get_image(); ?>">
               <!-- Si hay imagen, mostrarla como miniatura -->
               <div class="mb-2">
                 <?php if ($product->get_image()): ?>

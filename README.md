@@ -97,8 +97,8 @@ Las contribuciones son bienvenidas. Para contribuir:
 ## 📄 Licencia
 Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE.md](LICENSE.md) para más detalles.
 
-## 📞 Contacto
-Nombre - [@tutwitter](https://twitter.com/tutwitter) - email@ejemplo.com
+## 📞 Contacto Desarrollador
+Nombre - Jose Bohorquez - 3178773186
 
 Link del proyecto: [https://github.com/aebigor/seller](https://github.com/aebigor/seller)
 ```

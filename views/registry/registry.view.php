@@ -199,12 +199,48 @@
       <a href="index.php">
         <img class="img-fluid object-fit-none py-3" src="assets/imagenes/landing/logo_servitel.png">
       </a>
-      <form method="POST">
-        <h1 class="h3 mb-3 fw-normal">Registro Usuario</h1>
-        <div class="form-floating pb-2">
-          <input name="nombre" type="text" class="form-control" id="floatingInput" placeholder="Nombre" required
-            autofocus>
-          <label for="floatingInput">Ingrese su nombre</label>
+
+
+      <form method="POST" action="?c=Users&a=create_user">
+    <h1 class="h3 mb-3 fw-normal">Registro Usuario</h1>
+
+    <div class="form-floating pb-2">
+        <input name="user_name" type="text" class="form-control" placeholder="Nombre" required>
+        <label>Ingrese su nombre</label>
+    </div>
+
+    <div class="form-floating pb-2">
+        <input name="user_lastname" type="text" class="form-control" placeholder="Apellidos" required>
+        <label>Ingrese sus apellidos</label>
+    </div>
+
+    <div class="form-floating pb-2">
+        <input name="user_doc" type="text" class="form-control" placeholder="Número de identificación" required>
+        <label>Número de identificación</label>
+    </div>
+
+    <div class="form-floating pb-2">
+        <input name="user_cel" type="text" class="form-control" placeholder="Número de celular" required>
+        <label>Número de celular</label>
+    </div>
+
+    <div class="form-floating pb-2 d-flex">
+        <input name="user_email" type="text" class="form-control me-1" placeholder="Correo" required>
+        <select name="user_domain" class="form-select">
+            <option value="@servitel.cc">@servitel.cc</option>
+            <option value="@servientrega.co">@servientrega.co</option>
+            <option value="@global.com">@global.com</option>
+        </select>
+    </div>
+
+    <div class="form-floating pb-2">
+        <input name="user_pass" type="password" class="form-control" placeholder="Contraseña" required>
+        <label>Ingrese su contraseña</label>
+    </div>
+
+    <?php if (isset($_GET['m']) && $_GET['m'] === 'invalidDomain'): ?>
+        <div class="alert alert-danger">
+            <strong>Error:</strong> Dominio de correo no permitido.
         </div>
         <div class="form-floating pb-2">
           <input name="apellidos" type="text" class="form-control" id="floatingInput" placeholder="Apellidos" required>
@@ -233,8 +269,8 @@
       </form>
     </div>
   </main>
+  <br><br><br>
   <script src="assets/plantilla/bootstrap_5.3.3/assets/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/carrusel.js"></script>
 </body>
 
 </html>

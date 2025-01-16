@@ -214,7 +214,7 @@
               <?php echo isset($_GET['m']) && $_GET['m'] === 'loginFailed' ? '<div class="alert alert-danger alert-dismissible fade show" role="alert"><i class="bi bi-exclamation-circle"></i> Error: Inicio de sesión fallido. <br> Inténtalo de nuevo.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>' : '';              ?>
               <button class="btn btn-primary w-100" type="submit">Iniciar Sesión</button>
               <p class="mt-3 mb-0">
-                ¿No tienes cuenta? <a href="?c=Roles&a=createRolUsuario">Regístrate</a>
+                ¿No tienes cuenta? <a href="?c=Registry">Regístrate</a>
               </p>
             </form>
           </div>

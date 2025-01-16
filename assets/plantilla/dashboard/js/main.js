@@ -31,7 +31,7 @@ $(document).ready(function(){
 	});
 
 	/*  Exit system buttom */
-	$('.btn-exit-system').on('click', function(e){
+	$('.btn-exit-system-cs').on('click', function(e){
 		e.preventDefault();
 		Swal.fire({
 			title: '¿Está seguro de cerrar la sesión?',
@@ -44,12 +44,12 @@ $(document).ready(function(){
 			cancelButtonText: 'No, cancelar'
 		}).then((result) => {
 			if (result.value) {
-				window.location="?c=menuA&a=log_out";
+				window.location="?c=Log_out";
 			}
 		});
-	});
-    
+	});    
 });
+
 (function($){
     $(window).on("load",function(){
         $(".nav-lateral-content").mCustomScrollbar({

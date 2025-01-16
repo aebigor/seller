@@ -17,6 +17,7 @@
         protected $cantidad;
         protected $categoria;
         // Métodos
+        
         # Sobrecarga de Constructores
         public function __construct(){
             try {

@@ -12,16 +12,16 @@
 
             $username = "root";     // ajustar (usuario BD) en qa servidor de pruebas
 
-            $password = "S3rv1t3l4dm1n//";         // ajustar (Contraseña de BD) en qa servidor de pruebas
+            $password = "";         // ajustar (Contraseña de BD) en qa servidor de pruebas
 
-			$pdo = new PDO("mysql:host=$hostname;port=$port;dbname=$database;charset=utf8",$username,$password);
+            $pdo = new PDO("mysql:host=$hostname;port=$port;dbname=$database;charset=utf8",$username,$password);
 
-			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-			return $pdo;
+            return $pdo;
 
-		}
+        }
 
-	}
+    }
     
 ?>

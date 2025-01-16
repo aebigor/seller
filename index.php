@@ -1,16 +1,9 @@
 <?php
 
-    /* para pruebas 
-    require_once "models/DataBase.php";
-    $conn = DataBase::connection();
-
-    require_once "controllers/Dashboard.php";
-    $controller = new Dashboard;
-    $controller -> main();
-    */ 
-
+try {
+    // Iniciar el almacenamiento en búfer
     ob_start();
-    
+
     require_once "models/DataBase.php";
 
     // Helpers
@@ -21,18 +14,18 @@
     $defaultController = "Landing";
     $defaultAction = "main";
 
-    // Obtener controlador y acción desde la URL
-    $controllerName = isset($_REQUEST['c']) ? ucfirst(strtolower($_REQUEST['c'])) : $defaultController;
-    $actionName = isset($_REQUEST['a']) ? $_REQUEST['a'] : $defaultAction;
+    // Obtener controlador y acción desde la URL con validación
+    $controllerName = isset($_REQUEST['c']) ? ucfirst(preg_replace('/[^a-zA-Z0-9]/', '', strtolower($_REQUEST['c']))) : $defaultController;
+    $actionName = isset($_REQUEST['a']) ? preg_replace('/[^a-zA-Z0-9_]/', '', $_REQUEST['a']) : $defaultAction;
 
-    // Rutas protegidas (solo accesibles para usuarios autenticados)
-    #$protectedRoutes = ['Dashboard', 'Users', 'Products'];
-
-    // Verificar si la ruta es protegida y si el usuario está autenticado
-    #if (in_array($controllerName, $protectedRoutes) && !is_logged_in()) {
-        #header("Location: ?c=Login"); // Redirigir al login si no está autenticado
-        #exit();
-    #}
+    // Rutas protegidas (descomentar si es necesario)
+    /*
+    $protectedRoutes = ['Dashboard', 'Users', 'Products'];
+    if (in_array($controllerName, $protectedRoutes) && !is_logged_in()) {
+        header("Location: ?c=Login"); // Redirigir al login si no está autenticado
+        exit();
+    }
+    */
 
     // Construir ruta del archivo del controlador
     $controllerFile = "controllers/" . $controllerName . ".php";
@@ -47,10 +40,13 @@
 
             // Verificar si el método existe en el controlador
             if (method_exists($controller, $actionName)) {
-                verificarTimeoutCarrito(); // Verificar si hay productos expirados en el carrito
+                // Verificar si la función `verificarTimeoutCarrito` existe antes de llamarla
+                if (function_exists('verificarTimeoutCarrito')) {
+                    verificarTimeoutCarrito(); // Verificar si hay productos expirados en el carrito
+                }
 
                 // Llamar al método del controlador
-                call_user_func(array($controller, $actionName));
+                call_user_func([$controller, $actionName]);
             } else {
                 throw new Exception("El método '$actionName' no existe en el controlador '$controllerName'.");
             }
@@ -63,7 +59,7 @@
 } catch (Exception $e) {
     // Manejo de errores
     echo "<h1>Error</h1>";
-    echo "<p>" . $e->getMessage() . "</p>";
+    echo "<p>" . htmlspecialchars($e->getMessage()) . "</p>";
     echo "<p><a href='?c=Landing&a=main'>Volver al inicio</a></p>";
 } finally {
     // Finalizar el almacenamiento en búfer

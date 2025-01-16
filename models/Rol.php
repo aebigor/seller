@@ -85,43 +85,43 @@
 
 
 		# caso de uso # 02 leer todos los usuarios
-		public function rol_read()
-		{
-			try {
-				$rolList = [];
-				$sql = 'SELECT * FROM ROL';
-				$stmt = $this -> dbh -> query($sql);
-				foreach ($stmt -> fetchAll() as $rol) {
-					$rolList[] = new Rol(
-						$rol['id_rol'],
-						$rol['name']
-					);
-					
-				}
-				// Validamos
-				return $rolList;
-			} catch (Exception $e) {
-				die($e -> getMessage());				
-			}
-		}
+public function rol_read()
+{
+    try {
+        $rolList = [];
+        $sql = 'SELECT * FROM rol'; // Asegúrate de que sea 'rol'
+        $stmt = $this->dbh->query($sql);
+        foreach ($stmt->fetchAll() as $rol) {
+            $rolList[] = new Rol(
+                $rol['id_rol'],
+                $rol['name']
+            );
+        }
+        return $rolList;
+    } catch (Exception $e) {
+        die("Error al obtener roles: " . $e->getMessage());
+    }
+}
 
-		public function get_rol_by_id($id_rol)
-		{
-			try {
-				$sql = 'SELECT * FROM ROL WHERE id_rol = :id_rol';
-				$stmt = $this -> dbh -> prepare($sql);
-				$stmt -> bindValue('id_rol' , $id_rol);
-				$stmt -> execute();
-				$rolDb = $stmt -> fetch();
-				$rol = new Rol(
-					$rolDb['id_rol'],
-					$rolDb['name']
-				);
-				return $rol;
-			} catch (Exception $e) {
-				die($e -> getMessage());				
-			}
-		}
+
+
+public function get_rol_by_id($id_rol)
+{
+    try {
+        $sql = 'SELECT * FROM rol WHERE id_rol = :id_rol'; // Cambiado 'roles' a 'rol'
+        $stmt = $this->dbh->prepare($sql);
+        $stmt->bindValue('id_rol', $id_rol);
+        $stmt->execute();
+        $rolDb = $stmt->fetch();
+        return new Rol(
+            $rolDb['id_rol'],
+            $rolDb['name']
+        );
+    } catch (Exception $e) {
+        die("Error al obtener el rol: " . $e->getMessage());
+    }
+}
+
 
 
 

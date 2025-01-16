@@ -71,7 +71,7 @@ public function update_offer()
     }
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        //
+
         if (isset($_FILES['offer_image']) && $_FILES['offer_image']['error'] == 0) {
             
             $image_path = $this->handle_image_upload();

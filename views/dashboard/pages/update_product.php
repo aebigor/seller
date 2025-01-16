@@ -31,7 +31,7 @@
           <div class="col-12 col-md-6">
             <div class="form-group">
               <label for="producto_nombre" class="bmd-label-floating">Nombre del Producto</label>
-              <input name="product_name" type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 ]{1,100}" class="form-control" id="producto_nombre" maxlength="100" required value="<?php echo $product->get_name(); ?>">
+              <input name="product_name" type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 + ]{1,100}" class="form-control" id="producto_nombre" maxlength="100" required value="<?php echo $product->get_name(); ?>">
             </div>
           </div>
           
@@ -83,6 +83,7 @@
           <div class="col-12 col-md-6">
             <div class="form-group">
               <label for="producto_imagen" class="bmd-label-floating">Imagen del Producto</label>
+              <input type="hidden" name="existing_image" value="<?php echo $product->get_image(); ?>">
               <!-- Si hay imagen, mostrarla como miniatura -->
               <div class="mb-2">
                 <?php if ($product->get_image()): ?>

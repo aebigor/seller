@@ -44,7 +44,7 @@ $(document).ready(function(){
 			cancelButtonText: 'No, cancel'
 		}).then((result) => {
 			if (result.value) {
-				window.location="?c=menu";
+				window.location="?c=Log_out&a=main";
 			}
 		});
 	});

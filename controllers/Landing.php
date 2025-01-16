@@ -5,10 +5,12 @@ class Landing
     public function main()
     {
         require_once "models/Product.php";        
-        $product = new Product;      
+        $product = new Product;
+
+        // Obtener productos por categoría
         $category1_products = $product->products_by_category(1); 
         $category2_products = $product->products_by_category(2); 
-        $category3_products = $product->products_by_category(3); 
+        $category3_products = $product->products_by_category(3);
 
         require_once "views/landing/modules/1_header.php";
         require_once "views/landing/modules/2_nav_sup.php";

@@ -283,6 +283,25 @@
 
 
 
+public function update_amount($id, $new_amount) {
+    try {
+        $sql = 'UPDATE products SET amount = :amount WHERE id = :id';
+        $stmt = $this->dbh->prepare($sql);
+        $stmt->bindValue(':amount', $new_amount);
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+    } catch (Exception $e) {
+        die($e->getMessage());
+    }
+}
+
+
+
+	
+
+
+
+
 
 
 	}

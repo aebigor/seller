@@ -38,9 +38,48 @@ if (isset($_SESSION['sesion_status']) && $_SESSION['sesion_status'] === 'ok') {
 ?>
 
 
+<?php
+if (isset($_SESSION['user'])) {
+    $user = $_SESSION['user'];
+    $userName = $user['name'];
+    $userLastname = $user['lastname'];
+    $userRol = $user['role']; // Cambiado de 'rol' a 'role'
+    $roleName = '';
+
+    // Convertir ID del rol a nombre descriptivo
+    switch ($userRol) {
+        case 1:
+            $roleName = 'Super Admin';
+            break;
+        case 2:
+            $roleName = 'Admin';
+            break;
+        case 3:
+            $roleName = 'Seller';
+            break;
+        case 4:
+            $roleName = 'User';
+            break;
+        default:
+            $roleName = 'Desconocido';
+    }
+} else {
+    header("Location: ?c=Login");
+    exit;
+}
+
+?>
 
 
-				<br><small class="roboto-condensed-light">Web Developer</small>
+				<br>
+<small class="roboto-condensed-light">
+    <?php echo htmlspecialchars($userName . ' ' . $userLastname, ENT_QUOTES, 'UTF-8'); ?>
+</small>
+<br>
+<small class="roboto-condensed-light">
+    <?php echo htmlspecialchars($roleName, ENT_QUOTES, 'UTF-8'); ?>
+</small>
+
 			</figcaption>
 		</figure>
 		<div class="full-box nav-lateral-bar"></div>

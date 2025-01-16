@@ -135,25 +135,25 @@
 
 
 		// *** 2da Parte: Persistencia BD (CRUD) *** //
-		public function user_create()
-		{
-			try {
-				$sql = 'INSERT INTO USER VALUES (:id_user, :name, :lastname, :id_number, :cel, :email, :pass, :rol)';
-				$stmt = $this -> dbh -> prepare($sql);
-				$stmt -> bindValue('id_user',$this -> get_id_user());
-				$stmt -> bindValue('name',$this -> get_name());
-				$stmt -> bindValue('lastname',$this -> get_lastname());
-				$stmt -> bindValue('id_number',$this -> get_id_number());
-				$stmt -> bindValue('cel',$this -> get_cel());
-				$stmt -> bindValue('email',$this -> get_email());
-				$stmt -> bindValue('pass',$this -> get_pass());
-				$stmt -> bindValue('rol',$this -> get_rol());
-				// Validamos
-				$stmt -> execute();
-			} catch (Exception $e) {
-				die($e -> getMessage());				
-			}
-		}
+   public function user_create()
+    {
+        try {
+            $sql = 'INSERT INTO USER (name, lastname, id_number, cel, email, pass, rol) 
+                    VALUES (:name, :lastname, :id_number, :cel, :email, :pass, :rol)';
+            $stmt = $this->dbh->prepare($sql);
+            $stmt->bindValue('name', $this->name);
+            $stmt->bindValue('lastname', $this->lastname);
+            $stmt->bindValue('id_number', $this->id_number);
+            $stmt->bindValue('cel', $this->cel);
+            $stmt->bindValue('email', $this->email);
+            $stmt->bindValue('pass', $this->pass);
+            $stmt->bindValue('rol', $this->rol);
+            $stmt->execute();
+        } catch (Exception $e) {
+            throw new Exception("Error al crear usuario: " . $e->getMessage());
+        }
+    }
+
 
 
 
@@ -187,29 +187,36 @@
 
 
 
-		public function get_user_by_id($id_user)
-		{
-			try {
-				$sql = 'SELECT * FROM USER WHERE id_user = :id_user';
-				$stmt = $this -> dbh -> prepare($sql);
-				$stmt -> bindValue('id_user' , $id_user);
-				$stmt -> execute();
-				$userDb = $stmt -> fetch();
-				$user = new User(
-					$userDb['id_user'],
-					$userDb['name'],
-					$userDb['lastname'],
-					$userDb['id_number'],
-					$userDb['cel'],
-					$userDb['email'],
-					$userDb['pass'],
-					$userDb['rol']
-				);
-				return $user;
-			} catch (Exception $e) {
-				die($e -> getMessage());				
-			}
-		}
+public function get_user_by_id($id_user)
+{
+    try {
+        $sql = 'SELECT u.*, r.name as role_name
+                FROM USER u
+                JOIN ROL r ON u.rol = r.id_rol
+                WHERE id_user = :id_user';
+        $stmt = $this->dbh->prepare($sql);
+        $stmt->bindValue('id_user', $id_user);
+        $stmt->execute();
+        $userDb = $stmt->fetch();
+
+        if ($userDb) {
+            $this->id_user = $userDb['id_user'];
+            $this->name = $userDb['name'];
+            $this->lastname = $userDb['lastname'];
+            $this->id_number = $userDb['id_number'];
+            $this->cel = $userDb['cel'];
+            $this->email = $userDb['email'];
+            $this->pass = $userDb['pass'];
+            $this->rol = $userDb['rol'];
+            return $this;
+        }
+        return null;
+    } catch (Exception $e) {
+        throw new Exception("Error al obtener el usuario: " . $e->getMessage());
+    }
+}
+
+
 
 
 
@@ -257,6 +264,36 @@
 			} catch (Exception $e) {
 				die($e -> getMessage());				
 			}
+		}
+
+
+		public function get_user_by_email_and_password($email, $password)
+		{
+		    try {
+		        $sql = 'SELECT * FROM USER WHERE email = :email AND pass = :password';
+		        $stmt = $this->dbh->prepare($sql);
+		        $stmt->bindValue('email', $email);
+		        $stmt->bindValue('password', $password);
+		        $stmt->execute();
+
+		        $userDb = $stmt->fetch();
+
+		        if ($userDb) {
+		            return new User(
+		                $userDb['id_user'],
+		                $userDb['name'],
+		                $userDb['lastname'],
+		                $userDb['id_number'],
+		                $userDb['cel'],
+		                $userDb['email'],
+		                $userDb['pass'],
+		                $userDb['rol']
+		            );
+		        }
+		        return null;
+		    } catch (Exception $e) {
+		        die($e->getMessage());
+		    }
 		}
 
 
